@@ -1,0 +1,5 @@
+sqlHost = "Your SQL Host"
+sqlUsername = "Your SQL Username"
+sqlPassword = "Your SQL Password"
+sqlDB = "Your SQL Database Name"
+backendPort = "3000"  
