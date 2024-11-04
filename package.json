@@ -1,0 +1,23 @@
+{
+  "name": "ngo",
+  "version": "1.0.0",
+  "description": "A calendar of activities for funding",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/exdarku/PL-MiniCapstone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/exdarku/PL-MiniCapstone/issues"
+  },
+  "homepage": "https://github.com/exdarku/PL-MiniCapstone#readme",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.21.1"
+  }
+}
