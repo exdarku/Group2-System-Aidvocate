@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins";
+}
+
+body {
+    background-color: #FAF3DD;
+}
+
+nav {
+    background-color: #1C1D28;
+    padding: 20px;
+    width: 100%;
+    height: auto;
+}
+
+nav .links {
+    float: right;
+    margin: -10px;
+}
+
+nav .links a {
+    margin: 0 10px;
+    color: #FFFF;
+    text-decoration: none;
+}
+
+.links button {
+    background-color: #FCD384;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-weight: 600;
+}
