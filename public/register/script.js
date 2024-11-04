@@ -18,7 +18,7 @@ document.getElementById('registerButton').addEventListener('click', async (event
         if (response.ok){
             alert("User registered successfully");
         } else {
-            alert("There has been any error. Please try again later.");
+            alert("There has been an error. Please try again later.");
         }
     } catch (error) {
         alert("Error: " + error);
