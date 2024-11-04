@@ -50,7 +50,12 @@ To set up Aidvocate locally, follow these steps:
    ```
 
 3. **Set up the database**:
+   - We're using MySQL. For a smoother development experience, we recommend using MySQL Workbench to do queries and such.
    - Create a MySQL database and configure the connection in the `.env` file.
+      - `.env` template is at `/documentation`
+      - Your MySQL credentials should be filled up in the `.env` file.
+   - Copy the query from `/documentation/query/onequery.sql` and run it in MySQL Workbench to initialize your database.
+   
 
 4. **Run the application**:
    ```bash
