@@ -20,12 +20,32 @@ connection.connect((err) => {
 })
 
 router.post('/register', (req, res) => {
-    console.log("BODY: " + JSON.stringify(req.body, null, 2));
     const {firstName, lastName, username, password} = req.body;
     connection.query("INSERT INTO users (firstName, lastName, username, password) VALUES (?, ?, ?, ?)", [firstName, lastName, username, password], (err, results) => {
         if (err) throw err;
         res.status(201).json({message: "User registered successfuly"});
     });
+})
+
+router.post('/login', (req, res) => {
+    const {username, password} = req.body;
+    if (!username || !password) {
+        res.status(400).json({message: "Username and Password are both required."});
+    }
+
+    connection.query("SELECT * FROM users WHERE username = ?", [username], (err, results) => {
+        if (err) throw err;
+        const userData = results[0];
+        if (results.length === 0){
+            res.status(401).json({message: "Invalid username/password"});
+        } else {
+            if (userData.password === password) {
+                res.status(201).json({message: "User authenticated"});
+            } else {
+                res.status(401).json({message: "Invalid username/password 2"});
+            }
+        }
+    })
 })
 
 
