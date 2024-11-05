@@ -62,7 +62,9 @@ To set up Aidvocate locally, follow these steps:
    node server/server.js
    ```
 
-5. Open your browser and navigate to `http://localhost:3000` to view the site.
+5. Open your browser and navigate to `http://localhost:3000/register` to register a user.
+
+6. Go to `http://localhost:3000/login` to login to your newly created account.
 
 ## Usage
 

@@ -1,12 +1,5 @@
 -- One Query SQL
 
--- Fill up your details here, to be used for registration
--- MAKE SURE TO CHANGE THIS TO YOUR OWN DETAILS
-set @firstName = "Your First Name"; 
-set @lastName = "Your Last Name"; 
-set @username = "Your Username";
-set @password = "Your Password";
-
 drop table users;
 
 create table users (
@@ -18,7 +11,7 @@ create table users (
     PRIMARY KEY (userID)
 );
 
-INSERT INTO users (firstName, lastName, username, password) VALUES (@firstName, @lastName, @username, @password);
+INSERT INTO users (firstName, lastName, username, password) VALUES ("INIT", "INIT", "INIT", "INIT");
 
 -- Showing the final user table
 select * from users;

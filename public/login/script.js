@@ -15,7 +15,6 @@ document.getElementById('loginButton').addEventListener('click', async (error) =
         const data = await response.json();
         
         if (response.ok){
-            alert("Login successful");
             window.location.href = data.redirectUrl;
         } else {
             alert("No login for you")
