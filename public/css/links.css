@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins";
+    scroll-behavior: smooth;
+}
+
+body, html{
+    background-color: #FAF3DD;
+    height: 100%;
+}
+
+nav {
+    display: flex;              /* Aligns items horizontally */
+    align-items: center;        /* Centers items vertically */
+    justify-content: space-between; /* Ensures space between logo and links */
+    background-color: #1C1D28;
+    padding: 20px 30px;
+    width: 100%;
+    height: 10%;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+nav a img {
+    width: 150px;               /* Sets a fixed width for the logo */
+    height: auto;               /* Keeps the image aspect ratio */
+}
+
+nav .links {
+    display: flex;              /* Ensures links are in a row */
+    align-items: center;
+}
+
+nav .links a {
+    margin: 0 10px;
+    color: #FBFBF5;
+    text-decoration: none;
+}
+
+nav .links button {
+    background-color: #FCD384;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-weight: 600;
+    border: none;               /* Remove default border */
+    cursor: pointer;
+}
+
+
+/* FOOTER */
+footer {
+    height: 350px;
+    background-color: #1C1D28;
+    padding: 0px 50px;
+    color: #FBFBF5;
+}
+
+footer img{
+    width: 300px;
+}
+
+footer .contact {
+    display: flex;
+    align-items: center;
+    font-size: medium;
+}
+
+footer .contact img {
+    margin-right: 10px;
+    width: 20px;
+}
+
+footer .license {
+    width: 100%;
+    text-align: center;
+}
+
+footer > * {
+    margin-top: 20px;
+}
+
+
+
+
+/* FOR ALL BUTTON REDUCE BRIGHTNESS WHEN HOVER */
+button:hover {
+    filter: brightness(0.9);
+    cursor: pointer;
+}
