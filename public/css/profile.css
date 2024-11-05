@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body, html {
+    background-color: #FAF3DD;
+    height: 100%;
+}
+
+nav {
+    background-color: #1C1D28;
+    padding: 20px 30px;
+    width: 100%;
+}
+
+nav .links {
+    float: right;
+    margin: -10px;
+}
+
+nav .links a {
+    margin: 0 10px;
+    color: #FFFF;
+    text-decoration: none;
+}
+
+.links button {
+    background-color: #FCD384;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-weight: 600;
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.links button:hover {
+    background-color: #FCAF5B; /* Lighter shade on hover */
+}
+
+.hero-profile-container {
+    display: flex;
+    flex-direction: column; /* Stacks children vertically */
+    align-items: center; /* Centers items horizontally */
+}
+
+.hero {
+    text-align: center;
+    display: flex;
+    flex-direction: column;        
+    justify-content: center;       
+    align-items: center; 
+    width: 100%;
+    min-height: 50vh; /* Ensure minimum height */
+    color: #FFFF;
+    background-image: url('../images/hanna-morris-Eu_jjK6Z67Q-unsplash-scaled.png'); /* Replace with your image path */
+    background-size: cover;      
+    background-repeat: no-repeat;
+}
+
+.hero h1 {
+    font-size: 6rem; /* Adjust for responsiveness */
+    margin-bottom: 0; /* Remove any bottom margin */
+}
+
+.profile {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center the image and paragraph */
+    text-align: center; /* Center the text */
+}
+
+.profile img {
+    display: block; /* Ensures that margin applies correctly */
+    margin-top: 0; /* Remove additional space if needed */
+    width: 100%; /* Optional: makes the image responsive */
+}
+
+.foundation-description {
+    margin-top: 20px; /* Space between the image and the paragraph */
+    font-size: 1.2rem; /* Font size for the description */
+    color: #333; /* Text color */
+    max-width: 800px; /* Limit width for better readability */
+    line-height: 1.5; /* Improve line spacing */
+}
