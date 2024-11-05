@@ -73,12 +73,20 @@ body, html{
     width: 330px;
     color: #615858;
     margin: 10px;
+    height: max-content;
+    padding: 10px;
+    border-radius: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
 }
 
 .firstContent .card:nth-child(2) {
     margin-top: 200px;
 }
 
+.firstContent .card:hover {
+    transform: translateY(-10px); /* Move the card 10px up */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Adds a shadow for a floating effect */
+}
 
 
 /* SECOND CONTENT */
@@ -159,6 +167,12 @@ body, html{
     position: relative;
     overflow: hidden; /* Ensures pseudo-element stays within the card */
     border-bottom: solid #FCD384 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.thirdContent .card:hover {
+    transform: translateY(-10px); /* Move the card 10px up */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Adds a shadow for a floating effect */
 }
 
 .thirdContent .card::before {
@@ -233,6 +247,12 @@ body, html{
     display: flex;
     text-align: left;
     margin: 40px 0px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.fourthContent .card:hover {
+    transform: translateY(-10px); /* Move the card 10px up */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Adds a shadow for a floating effect */
 }
 
 .fourthContent .card .details {

@@ -1,4 +1,4 @@
-const eventsContainer = document.querySelector('.events');
+const eventsContainer = document.querySelector('.charity');
 
 // Function to create a card
 function createCard() {

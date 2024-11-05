@@ -45,7 +45,7 @@
 }
 
 
-.events {
+.charity {
     display: flex;
     flex-wrap: wrap; /* Allows items to wrap if there's not enough space */
     margin: 20px 0; /* Adds a 20px margin above and below the container */
@@ -53,16 +53,17 @@
 
 
 
-.events .card {
+.charity .card {
     width: 420px;
     height: 450px;
     position: relative;
     overflow: hidden; /* Ensures pseudo-element stays within the card */
     border-bottom: solid #FCD384 15px;
     margin: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
 }
 
-.events .card::before {
+.charity .card::before {
     content: "";
     position: absolute;
     top: 0;
@@ -77,12 +78,12 @@
 }
 
 
-.events .card button img {
+.charity .card button img {
     width: 30px;
     margin: 2px 0px 0px 1px;
 }
 
-.events .card button {
+.charity .card button {
     background-color: #FCD384;
     text-align: center;
     align-items: center;
@@ -97,10 +98,15 @@
     cursor: pointer;
 }
 
-.events .card .description {
+.charity .card .description {
     position: absolute;
     bottom: 0;
     text-align: left;
     margin: 30px 20px;
     color: black;
+}
+
+.charity .card:hover {
+    transform: translateY(-10px); /* Move the card 10px up */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Adds a shadow for a floating effect */
 }
