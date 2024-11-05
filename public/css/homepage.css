@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins";
+    scroll-behavior: smooth;
 }
 
 body, html{
@@ -18,6 +19,8 @@ nav {
     padding: 20px 30px;
     width: 100%;
     height: 10%;
+    position: sticky;
+    top: 0;
 }
 
 nav a img {
