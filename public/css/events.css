@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins";
+}
+body, html{
+    background-color: #FAF3DD;
+    height: 100%;
+}
+nav {
+    background-color: #1C1D28;
+    padding: 20px 30px;
+    width: 100%;
+    height: 10%;
+    height: auto;
+}
+
+nav .links {
+    float: right;
+    margin: -10px;
+}
+
+nav .links a {
+    margin: 0 10px;
+    color: #FBFBF5;
+    text-decoration: none;
+}
+
+.links button {
+    background-color: #FCD384;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-weight: 600;
+}
+
+.hero {
+    text-align: left;
+    padding: 60px 100px;
+    color:#FBFBF5;
+    font-size: 1.5rem;
+    background-image: url('../images/hanna-morris-Eu_jjK6Z67Q-unsplash-scaled.png');
+    background-position: 50%; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+}
+
+.mainContent {
+    display: flex;
+    gap: 10px;
+}
+
+.Left-Side {
+    margin: 50px;
+}
+
+.Left-Side-Top {
+    border: 10px solid transparent;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+}
+
+.Left-Side-Top img {
+    
+}
+
+
+
+.Right-Side {
+    display: flex;
+    margin-top: 50px;
+    margin-left: 10px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+
+    padding: 10px;
+    justify-content: center;
+    width: 500px;
+
+
+    background-color: #FBFBF5;
+}
+
+h2 {
+    margin: 0;
+    padding-top: 20px;
+    text-align: center;
+}
+
+
