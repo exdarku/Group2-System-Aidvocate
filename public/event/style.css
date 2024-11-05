@@ -36,7 +36,7 @@ nav .links a {
 
 .hero {
     text-align: left;
-    padding: 60px 100px;
+    padding: 50px;
     color:#FBFBF5;
     font-size: 1.5rem;
     background-image: url('../images/hanna-morris-Eu_jjK6Z67Q-unsplash-scaled.png');
@@ -48,45 +48,39 @@ nav .links a {
 
 .mainContent {
     display: flex;
-    gap: 10px;
+    width: 100%;
+    padding: 2%;
 }
 
 .Left-Side {
-    margin: 50px;
+    width: 70%;
+    margin: 1%;
 }
 
-.Left-Side-Top {
-    border: 10px solid transparent;
+.Left-Side img {
     width: 100%;
-    height: auto;
-    aspect-ratio: 1 / 1;
 }
 
-.Left-Side-Top img {
-    
+.Left-Side p {
+    margin-top: 20px;
 }
-
-
 
 .Right-Side {
-    display: flex;
-    margin-top: 50px;
-    margin-left: 10px;
-    margin-right: 50px;
-    margin-bottom: 50px;
+    display: block;
+    margin: 1%;
+    width: 30%;    
+}
 
-    padding: 10px;
-    justify-content: center;
-    width: 500px;
-
-
+.Right-Side .section {
     background-color: #FBFBF5;
+    width: 100%;
+    border-radius: 10px;
+    padding: 20px;
+    height: 400px;
+    margin-bottom: 40px;
 }
 
-h2 {
-    margin: 0;
-    padding-top: 20px;
-    text-align: center;
+.header .status {
+    color: #DDA840;
 }
-
 
