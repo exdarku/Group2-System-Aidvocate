@@ -12,10 +12,11 @@ document.getElementById('loginButton').addEventListener('click', async (error) =
             },
             body: JSON.stringify({username, password})
         })
-
         const data = await response.json();
+        
         if (response.ok){
             alert("Login successful");
+            window.location.href = data.redirectUrl;
         } else {
             alert("No login for you")
         }
