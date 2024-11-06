@@ -1,19 +1,28 @@
-// server/routes/admin.js
 const express = require('express');
 const router = express.Router();
 const ensureAuthenticated = require('../middleware/auth'); // Import the auth middleware
 const path = require('path');
 
-// Protected admin route
-router.get('/dashboard', ensureAuthenticated, (req, res) => {
-    // If the user is authenticated, send the dashboard view or data
-    res.sendFile(path.join(__dirname, "../../public/admin/dashboard/dashboard.html"));
-    //res.status(200).json({ message: 'Welcome to the admin dashboard!', user: req.user });
+// Serve static files from "client/public" publicly (no authentication needed)
+router.use('/public', express.static(path.join(__dirname, '../../client/public')));
+
+// Serve static files from "client/admin" only if authenticated
+router.use('/', ensureAuthenticated, express.static(path.join(__dirname, '../../client/admin')));
+
+router.get('/addorganization', ensureAuthenticated, (req, res) => {
+    res.sendFile(path.join(__dirname, '../../client/admin/organization/register/index.html'));
 });
 
-// Other routes can also be protected using the same middleware
+// Protected admin route
+router.get('/dashboard', ensureAuthenticated, (req, res) => {
+    // Serve the dashboard page only if authenticated
+    res.sendFile(path.join(__dirname, "../../client/admin/dashboard/dashboard.html"));
+});
+
+// Protected settings route
 router.get('/settings', ensureAuthenticated, (req, res) => {
     res.status(200).json({ message: 'Admin settings area.', user: req.user });
 });
+
 
 module.exports = router;

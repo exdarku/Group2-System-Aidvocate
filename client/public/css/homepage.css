@@ -11,43 +11,7 @@ body, html{
     height: 100%;
 }
 
-nav {
-    display: flex;              /* Aligns items horizontally */
-    align-items: center;        /* Centers items vertically */
-    justify-content: space-between; /* Ensures space between logo and links */
-    background-color: #1C1D28;
-    padding: 20px 30px;
-    width: 100%;
-    height: 10%;
-    position: sticky;
-    top: 0;
-}
-
-nav a img {
-    width: 150px;               /* Sets a fixed width for the logo */
-    height: auto;               /* Keeps the image aspect ratio */
-}
-
-nav .links {
-    display: flex;              /* Ensures links are in a row */
-    align-items: center;
-}
-
-nav .links a {
-    margin: 0 10px;
-    color: #FBFBF5;
-    text-decoration: none;
-}
-
-nav .links button {
-    background-color: #FCD384;
-    border-radius: 20px;
-    padding: 10px 20px;
-    font-weight: 600;
-    border: none;               /* Remove default border */
-    cursor: pointer;
-}
-
+/* NAV IN links.css */
 
 .hero {
     text-align: center;
@@ -109,12 +73,20 @@ nav .links button {
     width: 330px;
     color: #615858;
     margin: 10px;
+    height: max-content;
+    padding: 10px;
+    border-radius: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
 }
 
 .firstContent .card:nth-child(2) {
     margin-top: 200px;
 }
 
+.firstContent .card:hover {
+    transform: translateY(-10px); /* Move the card 10px up */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Adds a shadow for a floating effect */
+}
 
 
 /* SECOND CONTENT */
@@ -195,6 +167,12 @@ nav .links button {
     position: relative;
     overflow: hidden; /* Ensures pseudo-element stays within the card */
     border-bottom: solid #FCD384 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.thirdContent .card:hover {
+    transform: translateY(-10px); /* Move the card 10px up */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Adds a shadow for a floating effect */
 }
 
 .thirdContent .card::before {
@@ -269,6 +247,12 @@ nav .links button {
     display: flex;
     text-align: left;
     margin: 40px 0px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.fourthContent .card:hover {
+    transform: translateY(-10px); /* Move the card 10px up */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Adds a shadow for a floating effect */
 }
 
 .fourthContent .card .details {
@@ -346,41 +330,7 @@ nav .links button {
 }
 
 
-/* FOOTER */
-footer {
-    height: 350px;
-    background-color: #1C1D28;
-    padding: 0px 50px;
-    color: #FBFBF5;
-}
+/* FOOTER IN links.css */
 
-footer img{
-    width: 300px;
-}
 
-footer .contact {
-    display: flex;
-    align-items: center;
-    font-size: medium;
-}
-
-footer .contact img {
-    margin-right: 10px;
-    width: 20px;
-}
-
-footer .license {
-    width: 100%;
-    text-align: center;
-}
-
-footer > * {
-    margin-top: 20px;
-}
-
-/* FOR ALL BUTTON REDUCE BRIGHTNESS WHEN HOVER */
-button:hover {
-    filter: brightness(0.9);
-    cursor: pointer;
-}
 
