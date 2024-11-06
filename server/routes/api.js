@@ -18,7 +18,7 @@ connection.connect((err) => {
     console.log("[CONNECTION]: API connected to MySQL database");
 });
 
-router.get('/getorganizations', ensureAuthenticated, (req, res) => {
+router.get('/getorganizations', (req, res) => {
     connection.query('SELECT * FROM organizationData', (err, results) => {
         if (err) throw err;
         res.status(200).json(results);
