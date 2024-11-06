@@ -55,6 +55,16 @@
 }
 ```
 
+#### 5. **Get a single organization**
+- **Endpoint**: `/api/get/organization`
+- **Method**: GET
+- **Description**: Get a single organization. The request should include the following JSON body:
+```json
+{
+    "organizationID": 1
+}
+```
+
 
 
 ### Authentication Endpoints

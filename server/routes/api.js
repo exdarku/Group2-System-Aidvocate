@@ -71,6 +71,14 @@ router.get('/getorganizations', (req, res) => {
     });
 });
 
+router.get('/get/organization', (req, res) => {
+    const { organizationID } = req.body;
+    connection.query('SELECT * FROM organizationData WHERE organizationID = ?', [organizationID], (err, results) => {
+        if (err) throw err;
+        res.status(200).json(results);
+    });
+});
+
 
 
 // Function to dynamically set the content type based on image extension or type
