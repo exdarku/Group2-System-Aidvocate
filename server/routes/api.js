@@ -170,7 +170,7 @@ router.post('/addorganization', ensureAuthenticated, upload.fields([
         representativeName,
         representativeContactNumber
     } = req.body;
-
+    console.log(req.files); 
     // Retrieve the file buffers from the request
     const organizationLogo = req.files['organizationProfilePicture'] ? req.files['organizationProfilePicture'][0].buffer : null;
     const organizationFeaturedPicture = req.files['organizationFeaturedPicture'] ? req.files['organizationFeaturedPicture'][0].buffer : null;
