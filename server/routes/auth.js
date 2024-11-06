@@ -1,4 +1,5 @@
 const express = require('express');
+const ensureAuthenticated = require('../middleware/auth');
 const router = express.Router();
 const mysql = require('mysql');
 const passport = require('passport');
@@ -54,17 +55,50 @@ passport.deserializeUser((user, done) => {
 
 
 // Register route
-router.post('/register', async (req, res) => {
+router.post('/register', (req, res, next) => {
     const { firstName, lastName, username, password } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
-    connection.query(
-        'INSERT INTO users (firstName, lastName, username, password) VALUES (?, ?, ?, ?)',
-        [firstName, lastName, username, hashedPassword],
-        (err, results) => {
-            if (err) throw err;
-            res.status(201).json({ message: "User registered successfully" });
+
+    // First, check if there are any existing users in the database
+    connection.query('SELECT COUNT(*) AS count FROM users', (err, results) => {
+        if (err) {
+            console.error('Error checking users in database:', err);
+            return res.status(500).json({ message: 'Error checking users in database' });
         }
-    );
+
+        const userCount = results[0].count;
+
+        // If no users exist, allow registration without authentication check
+        if (userCount === 0) {
+            // No existing users, proceed with registration
+            return registerUser();
+        }
+
+        // If users already exist, ensure that the request is authenticated
+        ensureAuthenticated(req, res, () => {
+            registerUser();  // Proceed with registration if authenticated
+        });
+    });
+
+    // Function to register the user
+    async function registerUser() {
+        try {
+            const hashedPassword = await bcrypt.hash(password, 10);
+            connection.query(
+                'INSERT INTO users (firstName, lastName, username, password) VALUES (?, ?, ?, ?)',
+                [firstName, lastName, username, hashedPassword],
+                (err, results) => {
+                    if (err) {
+                        console.error('Error registering user:', err);
+                        return res.status(500).json({ message: 'Error registering user' });
+                    }
+                    res.status(201).json({ message: 'User registered successfully' });
+                }
+            );
+        } catch (err) {
+            console.error('Error hashing password:', err);
+            res.status(500).json({ message: 'Error processing registration' });
+        }
+    }
 });
 
 
