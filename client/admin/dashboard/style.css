@@ -6,6 +6,10 @@
     scroll-behavior: smooth;
 }
 
+h1 {
+    font-family: "Bebas Neue";
+}
+
 body, html{
     background-color: #fffbf3;
     height: 100%;
@@ -21,6 +25,7 @@ nav {
     height: 10%;
     position: sticky;
     top: 0;
+    z-index: 1;
 }
 
 nav a img {
@@ -171,7 +176,7 @@ nav .links button {
 .mainContent .charities .panel {
     background-color: #EBEBEB;
     width: 100%;
-    max-height: 250px;
+    height: 250px;
     border-radius: 20px;
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Three cards per row */
@@ -179,6 +184,7 @@ nav .links button {
     padding: 20px;
     overflow-y: auto;
     overflow-x: hidden;
+    transition: height 0.3s ease;
 }
 
 .mainContent .charities .panel .card {
@@ -272,17 +278,19 @@ nav .links button {
 /* DONATIONS PANEL */
 .mainContent .donations-panel {
     display: flex;
-    height: 210px;
+    height: 230px;
     margin: 20px 0;
     justify-content: space-between;
 }
 .mainContent .donations-panel .total-donations-panel {
     width: 55%;
     margin-right: 10px;
+    height: 100%;
 }
 .mainContent .donations-panel .recent-donations-panel {
     width: 45%;
     margin-left: 10px;
+    height: 100%;
 }
 
 .mainContent .donations-panel .total-donations-panel .card{
@@ -357,7 +365,7 @@ nav .links button {
     background-color: #C0A796;
     border-radius: 10px;
     color: #FBFBF5;
-    margin: 5px auto;
+    margin: 10px auto;
     align-items: center;
     padding: 5px 0;
     display: flex; /* Aligns items in a row */
@@ -369,6 +377,98 @@ nav .links button {
 
 .mainContent .donations-panel .recent-donations-panel .card .charity-donations-recent-amount {
     margin-left: auto;
+}
+
+
+/* EVENTS PANEL */
+.mainContent .events-panel {
+    margin-top: 70px;
+    width: 100%;
+    height: auto;
+}
+.mainContent .events-panel .events {
+    margin-top: 5px;
+    padding: 20px;
+    border-radius: 20px;
+    width: 100%;
+    border: solid #EAE3CD 2px;
+    border-radius: 20px;
+}
+
+
+/* EVENTS CARD*/
+.events-panel .card {
+    width: 100%;
+    height: 330px;
+    background-color: #FBFBF5;
+    border-radius: 30px;
+    overflow: hidden;
+    display: flex;
+    text-align: left;
+    margin: 40px 0px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.events-panel .card .details {
+    width: 40%;
+    padding: 30px;
+}
+
+.events-panel .card .details .header {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.events-panel .card .details .header .title .status {
+    color: #DDA840;
+}
+
+.events-panel .card .details .description {
+    margin-top: 10px;
+    font-size: small;
+}
+
+.events-panel .details .infos {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    font-size: small;
+    margin-top: 10px;
+}
+
+.events-panel .details .infos-date img {
+    width: 30px;
+    margin-right: 20px;
+}
+
+.events-panel .details .infos-place img {
+    width: 25px;
+    margin-right: 22px;
+    margin-left: 3px;
+}
+
+.events-panel .seeMoreButton {
+    width: 100px;
+    margin-top: 40px;
+    padding: 10px;
+    background-color: #FCD384;
+    border: none;
+    border-radius: 20px;
+    font-weight: 700;
+}
+
+.events-panel .card img {
+    width: 60%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.events-panel .card:hover {
+    transform: translateY(-10px); /* Move the card 10px up */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Adds a shadow for a floating effect */
 }
 
 
