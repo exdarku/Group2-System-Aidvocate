@@ -401,6 +401,7 @@ nav .links button {
     width: 100%;
     height: 330px;
     background-color: #FBFBF5;
+    color: #2A2A2A;
     border-radius: 30px;
     overflow: hidden;
     display: flex;
@@ -419,6 +420,10 @@ nav .links button {
     height: 20%;
     display: flex;
     justify-content: space-between;
+}
+
+.events-panel .card .details .header .title {
+    display: block;
 }
 
 .events-panel .card .details .header .title .status {
