@@ -17,6 +17,7 @@ CREATE TABLE organizationData (
     organizationID INT AUTO_INCREMENT PRIMARY KEY,
     organizationRegisterDate DATETIME DEFAULT CURRENT_TIMESTAMP,
     organizationProfilePicture BLOB,
+    organizationFeaturePicture LONGBLOB,
     organizationName VARCHAR(255) NOT NULL,
     organizationDescription TEXT,
     organizationPhoneNumber VARCHAR(20),
