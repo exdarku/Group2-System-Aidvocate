@@ -22,7 +22,7 @@ function createCard(organization) {
     const logo = document.createElement('div');
     logo.classList.add('logo');
     const logoImg = document.createElement('img');
-    logoImg.src = organization.organizationProfilePicture || 'images/default.png'; // Default image if no profile picture
+    logoImg.src = '/api/logo/' + organization.organizationID; 
     logoImg.alt = organization.organizationName;
     logo.appendChild(logoImg);
     header.appendChild(logo);
@@ -91,8 +91,9 @@ function displayTopCollectedCharityDonations(organization, index) {
     const logoDiv = document.createElement('div');
     logoDiv.classList.add('logo');
     const logoImg = document.createElement('img');
-    logoImg.src = organization.organizationProfilePicture || 'images/default.png'; // use default if no profile picture
+    logoImg.src = '/api/logo/' + organization.organizationID;
     logoImg.alt = organization.organizationName;
+    logoImg.style = 'width: 30px; height: 30px;';
     logoDiv.appendChild(logoImg);
 
     // Create the charity name
