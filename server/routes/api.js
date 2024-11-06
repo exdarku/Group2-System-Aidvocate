@@ -118,6 +118,39 @@ const getImageMimeType = (imageData) => {
     });
   });
 
+  router.get('/logo/:organizationId', (req, res) => {
+    const organizationId = req.params.organizationId;
+  
+    connection.query('SELECT organizationProfilePicture FROM organizationData WHERE organizationID = ?', [organizationId], (err, results) => {
+      if (err) {
+        console.error('Error retrieving image:', err);
+        return res.status(500).send('Error retrieving image');
+      }
+  
+      if (results.length > 0) {
+        const imageData = results[0].organizationProfilePicture;
+
+        // Check if image data is null or empty
+        if (!imageData) {
+          return res.status(404).send('Image not found');
+        }
+  
+        // Determine MIME type based on image data
+        const mimeType = getImageMimeType(imageData);
+  
+        // If MIME type is null, respond with an error
+        if (!mimeType) {
+          return res.status(500).send('Error: Invalid image data');
+        }
+  
+        // Set the correct content type header based on the image format
+        res.contentType(mimeType);
+        res.send(imageData);  // Send image data as the response
+      } else {
+        res.status(404).send('Image not found');
+      }
+    });
+  });
 
 
 router.post('/addorganization', ensureAuthenticated, upload.fields([
