@@ -55,5 +55,17 @@ app.get('/charities', (req, res) => {
 })
 
 app.listen(port, hostname, () => {
+    const asciiArt = `
+  AAAAA   III   DDDD   V   V  OOO   CCCCC   AAAAA   TTTTT  EEEEE
+ A     A   I    D   D  V   V O   O  C       A     A   T    E
+ AAAAAAA   I    D   D  V   V O   O  C       AAAAAAA   T    EEEE
+ A     A   I    D   D   V V  O   O  C       A     A   T    E
+ A     A  III   DDDD     V    OOO   CCCCC   A     A   T    EEEEE
+`;
+
+
+    console.log(asciiArt);
+    console.log("Welcome to Aidvocate!");
+    console.log("Developed by:\n-> Laurence Kharl Devera\t| Front End Developer\n-> Laurence Lesmoras\t\t| Back End Developer\n-> Mc Curvin Royeras\t\t| UI/UX Designer\n-> Angela Nareen Bernales\t| UI/UX Designer\n-> Joshua Martin Famor\t\t| Researcher\n\n\t\t\t[CONSOLE]");
     console.log(`[SERVER]: Server running at http://${hostname}:${port}/`);
 });
