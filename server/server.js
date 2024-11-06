@@ -46,6 +46,14 @@ app.use('/auth', authRoutes);
 app.use('/admin', adminRoutes);
 app.use('/api', apiRoutes);
 
+app.get('/events', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/public/events/'));
+});
+
+app.get('/charities', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/public/charities/'));
+})
+
 app.listen(port, hostname, () => {
     console.log(`[SERVER]: Server running at http://${hostname}:${port}/`);
 });
