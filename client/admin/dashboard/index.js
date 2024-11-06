@@ -113,6 +113,24 @@ function displayTopCollectedCharityDonations(organization, index) {
 }
 
 
+function openModal() {
+    // Show the modal
+    document.getElementById("add-modal").style.display = "block";
+
+    // Disable background scroll
+    document.body.style.overflow = "hidden";
+}
+
+function closeModal() {
+    // Hide the modal
+    document.getElementById("add-modal").style.display = "none";
+
+    // Enable background scroll
+    document.body.style.overflow = "auto";
+}
+
+
+
 // Element Containers
 const charityContainer = document.querySelector('.panel');
 const totalDonationsContainer = document.querySelector('.card-total-donations');
@@ -277,7 +295,7 @@ function createEventCard() {
 
 
 // Add multiple event cards
-const numberOfEventCards = 3; // Set the number of event cards you want
+const numberOfEventCards = 4; // Set the number of event cards you want
 for (let i = 0; i < numberOfEventCards; i++) {
     eventsContainer.appendChild(createEventCard());
 }
