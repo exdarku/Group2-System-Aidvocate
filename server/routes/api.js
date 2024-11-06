@@ -18,6 +18,44 @@ connection.connect((err) => {
     console.log("[CONNECTION]: API connected to MySQL database");
 });
 
+router.post('/donate', (req, res) =>{
+    const {
+        OrganizationID,
+        DonatorName,
+        DonationAmount,
+        Verified,
+        DonationProof
+    } = req.body;
+
+    connection.query('INSERT INTO donationTable (OrganizationID, DonatorName, DonationAmount, Verified, DonationProof) VALUES (?, ?, ?, ?, ?)', [OrganizationID, DonatorName == "" ? "Anonymous" : DonatorName, DonationAmount, false, DonationProof], (err, result) => {
+        if (err) {
+            console.error('Error inserting donation:', err);
+            return res.status(500).json({ message: 'Error adding donation' });
+        }
+
+        res.status(200).json({
+            message: 'Donation added successfully',
+            donationID: result.insertId
+        });
+    });
+});
+
+router.post('/verifydonation', ensureAuthenticated, (req, res) => {
+    const { DonationID } = req.body;
+
+    connection.query('UPDATE donationTable SET Verified = true WHERE DonationID = ?', [DonationID], (err, result) => {
+        if (err) {
+            console.error('Error verifying donation:', err);
+            return res.status(500).json({ message: 'Error verifying donation' });
+        }
+
+        res.status(200).json({
+            message: 'Donation verified successfully',
+            donationID: DonationID
+        });
+    });
+});
+
 router.get('/getorganizations', ensureAuthenticated, (req, res) => {
     connection.query('SELECT * FROM organizationData', (err, results) => {
         if (err) throw err;
