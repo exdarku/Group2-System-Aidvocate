@@ -53,9 +53,13 @@ router.post('/verifydonation', ensureAuthenticated, (req, res) => {
             return res.status(500).json({ message: 'Error verifying donation' });
         }
 
-        res.status(200).json({
-            message: 'Donation verified successfully',
-            donationID: DonationID
+        connection.query("UPDATE organizationData SET totalDonationCollected = totalDonationCollected + (SELECT DonationAmount FROM donationTable WHERE DonationID = ?) WHERE organizationID = (SELECT OrganizationID FROM donationTable WHERE DonationID = ?)", [DonationID, DonationID], (err, result) => {
+            if (err) {
+                console.error('Error updating organization donation:', err);
+                return res.status(500).json({ message: 'Error updating organization donation' });
+            }
+
+            res.status(200).json({message: "Donation verified successfully"});
         });
     });
 });
