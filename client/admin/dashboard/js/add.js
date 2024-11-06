@@ -48,6 +48,7 @@ form.addEventListener('submit', function(event) {
         if (data.message === 'Organization added successfully') {
             alert('Organization registered successfully!');
             form.reset();  // Reset the form after successful submission
+            window.location.reload();
         } else {
             alert('Error: ' + data.message);
         }
