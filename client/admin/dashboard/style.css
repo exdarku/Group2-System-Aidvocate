@@ -13,6 +13,7 @@ h1 {
 body, html{
     background-color: #fffbf3;
     height: 100%;
+    overflow: hidden;
 }
 
 nav {
@@ -147,7 +148,7 @@ nav .links button {
     width: 80%; /* Remaining width */
     margin-left: 20%; /* Offset to prevent overlap with leftBar */
     padding: 20px 30px;
-    height: 100vh; /* Full height for scrollable content */
+    height: 90%; /* Full height for scrollable content */
     overflow-y: auto; /* Allows scrolling within mainContent */
     background-color: #ffffff;
     color: #535359;
@@ -163,7 +164,7 @@ nav .links button {
     justify-content: space-between;
 }
 
-.mainContent .title button{
+.mainContent .title #viewAll{
     color: #2A2A2A;
     background: none;
     border: none;
@@ -171,6 +172,17 @@ nav .links button {
     font-weight: 600;
     font-size: medium;
     margin: 0 20px;
+}
+.mainContent .title #createCharity{
+    color: #FBFBF5;
+    background: #1C1D28;
+    border: none;
+    font-weight: 600;
+    font-size: medium;
+    margin: 0 20px;
+    padding: 5px 20px;
+    border-radius: 10px;
+    margin-left: auto;
 }
 
 .mainContent .charities .panel {
@@ -388,11 +400,10 @@ nav .links button {
 }
 .mainContent .events-panel .events {
     margin-top: 5px;
-    padding: 20px;
-    border-radius: 20px;
+    padding: 0px 40px;
     width: 100%;
     border: solid #EAE3CD 2px;
-    border-radius: 20px;
+    border-radius: 40px;
 }
 
 
@@ -408,6 +419,10 @@ nav .links button {
     text-align: left;
     margin: 40px 0px;
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.events-panel .card:first-child, .events-panel .card:last-child {
+    margin: 40px 0px;
 }
 
 .events-panel .card .details {
@@ -474,6 +489,152 @@ nav .links button {
 .events-panel .card:hover {
     transform: translateY(-10px); /* Move the card 10px up */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Adds a shadow for a floating effect */
+}
+
+
+
+/* ADD MODAL */
+/* Modal background styling */
+.add-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+}
+
+/* Modal content box styling */
+.add-modal .content {
+    position: relative;
+    margin: 5% auto;
+    background-color: #EBEBEB;
+    padding: 20px;
+    width: 60%;
+    max-height: 80vh;
+    overflow-y: auto; /* Allow scrolling within modal if content overflows */
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Adds a shadow for a floating effect */
+    color: #535359;
+    text-align: center;
+}
+.add-modal .content::-webkit-scrollbar-thumb {
+    background-color: #C1C1C1;
+    border: 4px solid transparent;
+    border-radius: 10px;
+    background-clip: padding-box; 
+}
+.add-modal .content::-webkit-scrollbar-thumb:hover {
+    background-color: #afafaf;
+}
+.add-modal .content::-webkit-scrollbar {
+    width: 20px;
+}
+
+
+/* Close button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+.add-modal .content h2 {
+    font-size: 30px;
+}
+
+.add-modal .content form {
+    display: block;
+    margin: 20px 0px;
+    padding: 20px;
+    text-align: left;
+    justify-content: left;
+}
+
+.add-modal .content form label{
+    display: block;
+}
+
+.add-modal .content form input[type="text"], input[type="number"] {
+    background-color: #DDDBD7;
+    color: #535359;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    padding: 20px;
+    font-size: large;
+    margin-bottom: 20px;
+}
+.add-modal .content form input::placeholder {
+    color: #C1C0BF;
+}
+
+.add-modal .content form .divide-input {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 40px;
+}
+.add-modal .content form .divide-input .input {
+    display: block;
+    width: 100%;
+}
+
+.add-modal .content form textarea {
+    background-color: #DDDBD7;
+    color: #535359;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    padding: 20px;
+    font-size: large;
+    margin-bottom: 20px;
+    
+    resize: none; /* Prevent resizing */
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 200px; /* Set a max height to trigger scrolling when text exceeds this height */
+}
+.add-modal .content form textarea::placeholder {
+    color: #C1C0BF;
+}
+
+.add-modal .content form input[type=file]::-webkit-file-upload-button {
+    background-color: #DDDBD7;
+    border: solid #d1ccc3 1px;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.add-modal .content form input[type=file]::-webkit-file-upload-button:hover {
+    background-color: #d1ccc3;
+}
+
+
+.add-modal .content form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #FCD384;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.add-modal .content form button:hover {
+    background-color: #fbb13c;
 }
 
 
