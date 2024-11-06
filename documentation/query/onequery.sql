@@ -14,7 +14,7 @@ create table users (
 CREATE TABLE organizationData (
     organizationID INT AUTO_INCREMENT PRIMARY KEY,
     organizationRegisterDate DATETIME DEFAULT CURRENT_TIMESTAMP,
-    organizationProfilePicture BLOB,
+    organizationProfilePicture LONGBLOB,
     organizationFeaturePicture LONGBLOB,
     organizationName VARCHAR(255) NOT NULL,
     organizationDescription TEXT,
