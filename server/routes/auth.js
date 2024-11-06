@@ -15,7 +15,7 @@ const connection = mysql.createConnection({
 
 connection.connect((err) => {
     if (err) throw err;
-    console.log("Connected to SQL database!");
+    console.log("[CONNECTION]: Auth connected to MySQL database");
 });
 
 // Configure Passport's Local Strategy
@@ -66,6 +66,7 @@ router.post('/register', async (req, res) => {
         }
     );
 });
+
 
 // Login route
 router.post('/login', (req, res, next) => {
