@@ -46,41 +46,41 @@ nav .links a {
 }
 
 .hero {
-    text-align: center;
     display: flex;
     flex-direction: column;        
     justify-content: center;       
     align-items: center; 
     width: 100%;
-    min-height: 50vh; /* Ensure minimum height */
+    min-height: 30vh; /* Ensure minimum height */
     color: #FFFF;
     background-image: url('../images/hanna-morris-Eu_jjK6Z67Q-unsplash-scaled.png'); /* Replace with your image path */
     background-size: cover;      
     background-repeat: no-repeat;
-}
-
-.hero h1 {
-    font-size: 6rem; /* Adjust for responsiveness */
-    margin-bottom: 0; /* Remove any bottom margin */
+    background-position: center;
 }
 
 .profile {
-    display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center the image and paragraph */
-    text-align: center; /* Center the text */
+    text-align: left; /* Center the text */
+    padding: 10px 50px;
+    width: 70%;
+}
+
+.profile h1 {
+    text-transform: uppercase;
+    font-size: 40px;
+    margin: 10px 0px;
+    width: 100%;
 }
 
 .profile img {
-    display: block; /* Ensures that margin applies correctly */
-    margin-top: 0; /* Remove additional space if needed */
-    width: 100%; /* Optional: makes the image responsive */
+    width: 100%;
+    border-radius: 30px;
 }
 
-.foundation-description {
-    margin-top: 20px; /* Space between the image and the paragraph */
-    font-size: 1.2rem; /* Font size for the description */
-    color: #333; /* Text color */
-    max-width: 800px; /* Limit width for better readability */
-    line-height: 1.5; /* Improve line spacing */
+.profile p {
+    font-size: large;
+    margin: 20px 0px;
+    text-indent: 50px;
+    text-align: justify;
 }
+
