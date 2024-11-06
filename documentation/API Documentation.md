@@ -12,6 +12,8 @@
 - **Description**: Retrieves a list of all registered organizations.
 
 #### 2. **Add a New Organization**
+> [!NOTE]  
+> Do not use this endpoint, will just make you crazy. Just use /admin/addorganizations.
 - **Endpoint**: `/api/addorganizations`
 - **Method**: POST
 - **Access**: Requires authorization
