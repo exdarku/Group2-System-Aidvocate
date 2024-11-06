@@ -566,7 +566,7 @@ nav .links button {
     display: block;
 }
 
-.add-modal .content form input[type="text"], input[type="number"] {
+.add-modal .content form input[type="text"], input[type="number"], input[type=email] {
     background-color: #DDDBD7;
     color: #535359;
     border: none;

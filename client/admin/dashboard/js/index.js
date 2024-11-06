@@ -114,22 +114,6 @@ function displayTopCollectedCharityDonations(organization, index) {
 }
 
 
-function openModal() {
-    // Show the modal
-    document.getElementById("add-modal").style.display = "block";
-
-    // Disable background scroll
-    document.body.style.overflow = "hidden";
-}
-
-function closeModal() {
-    // Hide the modal
-    document.getElementById("add-modal").style.display = "none";
-
-    // Enable background scroll
-    document.body.style.overflow = "auto";
-}
-
 
 
 // Element Containers
