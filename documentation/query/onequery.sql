@@ -11,8 +11,6 @@ create table users (
     PRIMARY KEY (userID)
 );
 
-INSERT INTO users (firstName, lastName, username, password) VALUES ("INIT", "INIT", "INIT", "INIT");
-
 CREATE TABLE organizationData (
     organizationID INT AUTO_INCREMENT PRIMARY KEY,
     organizationRegisterDate DATETIME DEFAULT CURRENT_TIMESTAMP,
