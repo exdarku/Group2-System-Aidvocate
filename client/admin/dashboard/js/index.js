@@ -176,3 +176,6 @@ const options = { weekday: 'long', year: 'numeric', month: 'long', day: '2-digit
 const formattedDate = today.toLocaleDateString('en-US', options);
 
 document.getElementById('dateToDay').textContent = formattedDate;
+
+
+document.getElementById('userGreeting').textContent = `Hello, ${sessionStorage.getItem("firstName")}!`;
