@@ -1,22 +1,26 @@
 -- One Query SQL
+-- Updated Nov 7, 2024 | 4:47AM
 
-drop table users;
+-- Drop tables manually (adjust based on your needs)
+DROP TABLE IF EXISTS organizationEvents, organizationDonationDescription, donationTable, organizationData;
 
-create table users (
-	userID int NOT NULL AUTO_INCREMENT,
-    firstName varchar(255),
-    lastName varchar(255) NOT NULL,
-    username varchar(255),
-    password varchar(255),
+-- Create tables
+
+-- Create `users` table
+CREATE TABLE IF NOT EXISTS users (
+    userID INT NOT NULL AUTO_INCREMENT,
+    firstName VARCHAR(255),
+    lastName VARCHAR(255) NOT NULL,
+    username VARCHAR(255),
+    password VARCHAR(255),
     PRIMARY KEY (userID)
 );
 
-INSERT INTO users (firstName, lastName, username, password) VALUES ("INIT", "INIT", "INIT", "INIT");
-
-CREATE TABLE organizationData (
+-- Create `organizationData` table
+CREATE TABLE IF NOT EXISTS organizationData (
     organizationID INT AUTO_INCREMENT PRIMARY KEY,
     organizationRegisterDate DATETIME DEFAULT CURRENT_TIMESTAMP,
-    organizationProfilePicture BLOB,
+    organizationProfilePicture LONGBLOB,
     organizationFeaturePicture LONGBLOB,
     organizationName VARCHAR(255) NOT NULL,
     organizationDescription TEXT,
@@ -28,7 +32,8 @@ CREATE TABLE organizationData (
     totalDonationCollected DECIMAL(15, 2) DEFAULT 0.00
 );
 
-CREATE TABLE donationTable (
+-- Create `donationTable` table
+CREATE TABLE IF NOT EXISTS donationTable (
     DonationID INT AUTO_INCREMENT PRIMARY KEY,
     DonationTimestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     OrganizationID INT,
@@ -36,8 +41,30 @@ CREATE TABLE donationTable (
     DonationAmount DECIMAL(10, 2) NOT NULL,
     Verified BOOLEAN DEFAULT FALSE,
     DonationProof BLOB,
-    FOREIGN KEY (OrganizationID) REFERENCES organizationData(OrganizationID)
+    FOREIGN KEY (OrganizationID) REFERENCES organizationData(organizationID)
 );
 
--- Showing the final user table
-select * from users;
+-- Create `organizationEvents` table
+CREATE TABLE IF NOT EXISTS organizationEvents (
+    eventID INT AUTO_INCREMENT PRIMARY KEY,
+    organizationID INT NOT NULL,
+    nameOfEvent VARCHAR(255) NOT NULL,
+    descriptionOfEvent TEXT,
+    imageOfEvent_posters LONGBLOB,
+    location VARCHAR(255),
+    date DATE,
+    time TIME,
+    FOREIGN KEY (organizationID) REFERENCES organizationData(organizationID) ON DELETE CASCADE
+);
+
+-- Create `organizationDonationDescription` table
+CREATE TABLE IF NOT EXISTS organizationDonationDescription (
+    organizationID INT NOT NULL, 
+    nameOfAccountHolder VARCHAR(255),
+    gcashQr LONGBLOB,
+    bankAccountName VARCHAR(255),
+    bankAccountBank VARCHAR(255),
+    bankAccountNumber VARCHAR(50),
+    FOREIGN KEY (organizationID) REFERENCES organizationData(organizationID) ON DELETE CASCADE,
+    PRIMARY KEY (organizationID)
+);

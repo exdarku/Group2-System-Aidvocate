@@ -22,7 +22,7 @@ function createCard(organization) {
     const logo = document.createElement('div');
     logo.classList.add('logo');
     const logoImg = document.createElement('img');
-    logoImg.src = organization.organizationProfilePicture || 'images/default.png'; // Default image if no profile picture
+    logoImg.src = '/api/logo/' + organization.organizationID; // Default image if no profile picture
     logoImg.alt = organization.organizationName;
     logo.appendChild(logoImg);
     header.appendChild(logo);
@@ -44,11 +44,9 @@ function createCard(organization) {
     const cardDonations = document.createElement('div');
     cardDonations.classList.add('card-donations');
     const donationAmount = document.createElement('h2');
-    donationAmount.textContent = `PHP ${organization.totalDonationCollected}`;
-    const donationsToday = document.createElement('p');
-    donationsToday.textContent = '2 donations today'; // Placeholder for today’s donations
+    donationAmount.textContent = `PHP ${organization.totalDonationCollected.toLocaleString()}`;
+
     cardDonations.appendChild(donationAmount);
-    cardDonations.appendChild(donationsToday);
     card.appendChild(cardDonations);
 
     // Create the details section for representative
@@ -91,7 +89,7 @@ function displayTopCollectedCharityDonations(organization, index) {
     const logoDiv = document.createElement('div');
     logoDiv.classList.add('logo');
     const logoImg = document.createElement('img');
-    logoImg.src = organization.organizationProfilePicture || 'images/default.png'; // use default if no profile picture
+    logoImg.src = '/api/logo/' + organization.organizationID; // use default if no profile picture
     logoImg.alt = organization.organizationName;
     logoDiv.appendChild(logoImg);
 
@@ -112,22 +110,6 @@ function displayTopCollectedCharityDonations(organization, index) {
     return charityDonationDiv; // Return the newly created charity donation div
 }
 
-
-function openModal() {
-    // Show the modal
-    document.getElementById("add-modal").style.display = "block";
-
-    // Disable background scroll
-    document.body.style.overflow = "hidden";
-}
-
-function closeModal() {
-    // Hide the modal
-    document.getElementById("add-modal").style.display = "none";
-
-    // Enable background scroll
-    document.body.style.overflow = "auto";
-}
 
 
 
@@ -151,7 +133,7 @@ fetch('http://localhost:3000/api/getorganizations', {
 
         totalCollectedDonations += org.totalDonationCollected; // get the totalDonationCollected displayed in total-collected-donations
     });
-    totalCollectedDonationsText.textContent = "PHP " + totalCollectedDonations.toFixed(2); // change the text content of total-collected-donations
+    totalCollectedDonationsText.textContent = "PHP " + totalCollectedDonations.toLocaleString(); // change the text content of total-collected-donations
 
 
     // Sort organizations by totalDonationCollected in descending order
@@ -171,134 +153,7 @@ fetch('http://localhost:3000/api/getorganizations', {
 });
 
 
-// SHOW EVENT CARDS
-const eventsContainer = document.querySelector('.events');
 
-// Function to create an event card
-function createEventCard() {
-    const card = document.createElement('div');
-    card.classList.add('card');
-    
-    const details = document.createElement('div');
-    details.classList.add('details');
-
-    // Header section with title and date
-    const header = document.createElement('div');
-    header.classList.add('header');
-
-    const title = document.createElement('div');
-    title.classList.add('title');
-    
-    const status = document.createElement('h5');
-    status.classList.add('status');
-    status.textContent = 'UPCOMING EVENT';
-    
-    const eventTitle = document.createElement('h3');
-    eventTitle.textContent = 'YOUTH FOR CHILDREN';
-    
-    title.appendChild(status);
-    title.appendChild(eventTitle);
-
-    const date = document.createElement('div');
-    date.classList.add('date');
-    
-    const day = document.createElement('h4');
-    day.id = 'event-day';
-    day.textContent = '01';
-    
-    const month = document.createElement('h4');
-    month.id = 'event-month';
-    month.textContent = 'Nov';
-    
-    date.appendChild(day);
-    date.appendChild(month);
-
-    header.appendChild(title);
-    header.appendChild(date);
-    details.appendChild(header);
-
-    // Description
-    const description = document.createElement('p');
-    description.classList.add('description');
-    description.textContent = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
-    details.appendChild(description);
-
-    // Event time
-    const infosDate = document.createElement('div');
-    infosDate.classList.add('infos-date', 'infos');
-    
-    const clockIcon = document.createElement('img');
-    clockIcon.src = '../images/schedule.png';
-    clockIcon.alt = 'Clock';
-    
-    const venueDetailsTime = document.createElement('div');
-    venueDetailsTime.classList.add('venue-details');
-    
-    const venueStart = document.createElement('p');
-    venueStart.id = 'venue-start';
-    venueStart.textContent = 'Friday, 5:00PM, EST';
-    
-    const venueEnd = document.createElement('p');
-    venueEnd.id = 'venue-end';
-    venueEnd.textContent = 'Friday, 5:00PM, EST';
-    
-    venueDetailsTime.appendChild(venueStart);
-    venueDetailsTime.appendChild(venueEnd);
-    
-    infosDate.appendChild(clockIcon);
-    infosDate.appendChild(venueDetailsTime);
-    details.appendChild(infosDate);
-
-    // Event location
-    const infosPlace = document.createElement('div');
-    infosPlace.classList.add('infos-place', 'infos');
-    
-    const locationIcon = document.createElement('img');
-    locationIcon.src = '../images/Vector.png';
-    locationIcon.alt = 'Location';
-    
-    const venueDetailsPlace = document.createElement('div');
-    venueDetailsPlace.classList.add('venue-details');
-    
-    const venuePlace1 = document.createElement('p');
-    venuePlace1.id = 'venue-place';
-    venuePlace1.textContent = 'Lorem Ipsum';
-    
-    const venuePlace2 = document.createElement('p');
-    venuePlace2.id = 'venue-place';
-    venuePlace2.textContent = 'Lorem Ipsum';
-    
-    venueDetailsPlace.appendChild(venuePlace1);
-    venueDetailsPlace.appendChild(venuePlace2);
-    
-    infosPlace.appendChild(locationIcon);
-    infosPlace.appendChild(venueDetailsPlace);
-    details.appendChild(infosPlace);
-
-    // See More Button
-    const seeMoreButton = document.createElement('button');
-    seeMoreButton.classList.add('seeMoreButton');
-    seeMoreButton.textContent = 'See more';
-    details.appendChild(seeMoreButton);
-
-    card.appendChild(details);
-
-    // Event image
-    const eventImage = document.createElement('img');
-    eventImage.src = '../images/youthforchildren.png';
-    eventImage.alt = '';
-    card.appendChild(eventImage);
-
-    return card;
-}
-
-
-
-// Add multiple event cards
-const numberOfEventCards = 4; // Set the number of event cards you want
-for (let i = 0; i < numberOfEventCards; i++) {
-    eventsContainer.appendChild(createEventCard());
-}
 
 let charityScrollHeight = 0;
 
@@ -314,3 +169,11 @@ function viewAll() {
     }
 }
 
+const today = new Date();
+const options = { weekday: 'long', year: 'numeric', month: 'long', day: '2-digit' };
+const formattedDate = today.toLocaleDateString('en-US', options);
+
+document.getElementById('dateToDay').textContent = formattedDate;
+
+
+document.getElementById('userGreeting').textContent = `Hello, ${sessionStorage.getItem("firstName")}!`;
