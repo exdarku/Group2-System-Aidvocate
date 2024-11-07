@@ -45,10 +45,8 @@ function createCard(organization) {
     cardDonations.classList.add('card-donations');
     const donationAmount = document.createElement('h2');
     donationAmount.textContent = `PHP ${organization.totalDonationCollected.toLocaleString()}`;
-    const donationsToday = document.createElement('p');
-    donationsToday.textContent = '2 donations today'; // Placeholder for today’s donations
+
     cardDonations.appendChild(donationAmount);
-    cardDonations.appendChild(donationsToday);
     card.appendChild(cardDonations);
 
     // Create the details section for representative

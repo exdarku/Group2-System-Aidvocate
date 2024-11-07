@@ -55,7 +55,7 @@
             <div class="charities">
                 <div class="title">
                     <h1>LIST OF CHARITIES</h1>
-                    <button onclick="openModal()" id="createCharity">Add +</button>
+                    <button onclick="openCharityModal()" id="createCharity">Add +</button>
                     <button onclick="viewAll()" id="viewAll">View All</button>
                 </div>
 
@@ -96,8 +96,10 @@
             </div> <!-- END OF DONATIONS -->
 
             <div class="events-panel">
-                <h1>UPCOMING EVENTS | NOVEMBER</h1>
-
+                <div class="header">
+                    <h1>UPCOMING EVENTS | NOVEMBER</h1>
+                    <button onclick="openEventModal()" id="createEvent">Create +</button>
+                </div>
                 <div class="events">
 
                 </div>
@@ -108,12 +110,13 @@
     </div>
 
 
-    <div id="add-modal" class="add-modal">
+    <!-- MODAL FOR ADD CHARITY -->
+    <div id="addCharity-modal" class="add-modal">
         <div class="content">
-            <span class="close" onclick="closeModal()">&times;</span>
+            <span class="close" onclick="closeCharityModal()">&times;</span>
             <h2>Add New Charity</h2>
 
-            <form id="registrationForm" enctype="multipart/form-data">
+            <form id="charityRegistrationForm" enctype="multipart/form-data">
                 <div class="divide-input">
                     <div class="input">
                         <label for="organizationName">Charity Name</label>
@@ -180,9 +183,46 @@
         </div>
     </div>
 
+    <!-- MODAL FOR ADD EVENT -->
+    <div id="addEvent-modal" class="add-modal">
+        <div class="content">
+            <span class="close" onclick="closeEventModal()">&times;</span>
+            <h2>Add New Event</h2>
+
+            <form id="eventRegistrationForm" enctype="multipart/form-data">
+                <label for="displayOrganizationsName">Charity Name</label>
+                <select name="displayOrganizationsName" id="displayOrganizationsName" required>
+                    <option value="">Select Charity</option>
+                </select>
+       
+                <label for="eventName">Event Name</label>
+                <input type="text" id="eventName" name="eventName" placeholder="Enter event name" required>
+
+                <label for="eventDescription">Description</label>
+                <textarea id="eventDescription" name="eventDescription" rows="8" placeholder="Enter description" required></textarea>
+
+                <label for="eventLocation">Location</label>
+                <input type="text" id="eventLocation" name="eventLocation" placeholder="Enter event name" required>
+
+                <label for="eventDate">Date</label>
+                <input type="date" id="eventDate" name="eventDate" required>
+
+                <label for="eventTime">Time</label>
+                <input type="time" id="eventTime" name="eventTime" required>
+
+                <label for="eventImagePoster">Image Poster</label>
+                <input type="file" id="eventImagePoster" name="eventImagePoster" accept="image/*" required>
+
+
+                <button type="submit">Register Event</button>
+            </form>
+        </div>
+    </div>
+
     <script src="js/index.js"></script>
-    <script src="js/add.js"></script>
+    <script src="js/add-charity.js"></script>
     <script src="js/recentDonation.js"></script>
     <script src="js/events.js"></script>
+    <script src="js/add-event.js"></script>
 </body>
 </html>
