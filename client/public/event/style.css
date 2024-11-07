@@ -56,9 +56,15 @@ nav .links a {
     width: 70%;
     margin: 1%;
 }
+.Left-Side h4{
+    color: #DDA840;
+}
 
 .Left-Side img {
     width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 20px;
 }
 
 .Left-Side p {
@@ -72,15 +78,59 @@ nav .links a {
 }
 
 .Right-Side .section {
-    background-color: #FBFBF5;
+    background-color: #FCD384;
     width: 100%;
     border-radius: 10px;
     padding: 20px;
-    height: 400px;
+    height: auto;
     margin-bottom: 40px;
+    position: relative;
+}
+.Right-Side .section button {
+    background-color: #1C1D28;
+    border-radius: 20px;
+    padding: 5px 20px;
+    font-size: larger;
+    color: #FBFBF5;
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
 }
 
-.header .status {
-    color: #DDA840;
+.Right-Side .section .details-header{
+    color: #615858;
+}
+
+.Right-Side .section .details{
+    display: flex;
+    align-items: center;
+    font-size: medium;
+    margin: 10px 0;
+}
+
+.Right-Side .section .details img{
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+}
+.Right-Side .section .details p{
+    font-size: small;
+}
+
+.mapouter {
+    position: relative;
+    text-align: right;
+    width: 100%;
+    height: 200px;
+}
+.gmap_canvas {
+    overflow: hidden;
+    background: none !important;
+    width: 100%;
+    height: 200px;
+}
+.gmap_iframe {
+    width: 100% !important;
+    height: 200px !important;
 }
 

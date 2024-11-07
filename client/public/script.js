@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <p>${event.location}</p>
                             </div>
                         </div>
-                        <button class="seeMoreButton">See more</button>
+                        <button class="seeMoreButton" onclick="showEvent(${event.eventID})">See more</button>
                     </div>
                     <img src="${'/api/eventimage/' + event.eventID || 'images/default-event.png'}" alt="${event.nameOfEvent}">
                 `;
@@ -124,3 +124,8 @@ document.addEventListener("DOMContentLoaded", () => {
 document.querySelector('.seeMoreButton').addEventListener('click', () => {
     window.location.href = '/charities';
 });
+
+function showEvent(eventID) {
+    window.location.href = `/event?eventID=${eventID}`;
+    console.log(eventID)
+}
