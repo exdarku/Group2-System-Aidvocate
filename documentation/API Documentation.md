@@ -17,6 +17,7 @@
    - [Get all donations](#12-get-all-donations)
    - [Get all events](#13-get-all-events)
    - [Get a specific event](#14-get-an-event-data)
+   - [Get verified donator count](#15-get-verified-donator-count)
 3. [Authentication Endpoints](#authentication-endpoints)
    - [User Authentication](#1-user-authentication)
    - [User Login](#2-user-login)
@@ -187,6 +188,13 @@
 - **Endpoint**: `/api/get/donation/:eventID`
 - **Method**: `GET`
 - **Description**: Retrieves a specific organization event in the database.
+
+
+### 15. **Get verified donator count**
+- **Endpoint**: `/api/get/donatorcount/:organizationID`
+- **Method**: `GET`
+- **Description**: Retrieves all donator count that has been verified.
+
 
 ---
 

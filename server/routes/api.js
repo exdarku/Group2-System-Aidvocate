@@ -94,6 +94,14 @@ router.get('/get/organization', (req, res) => {
     });
 });
 
+router.get('/get/donatorcount/:organizationID', ensureAuthenticated, (req, res) => {
+    const organizationID = req.params.organizationID;
+    connection.query('SELECT COUNT(*) AS DonatorCount FROM donationTable WHERE organizationID = ? AND verified = 1', [organizationID], (err, results) => {
+        if (err) throw err;
+        res.status(200).json(results);
+    });
+});
+
 
 
 // Function to dynamically set the content type based on image extension or type

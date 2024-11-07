@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const ensureAuthenticated = require('../middleware/auth'); // Import the auth middleware
 const path = require('path');
+//imong mama tsinelas
 
 // Serve static files from "client/public" publicly (no authentication needed)
 router.use('/public', express.static(path.join(__dirname, '../../client/public')));
