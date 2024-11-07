@@ -240,7 +240,7 @@ const getImageMimeType = (imageData) => {
   router.get('/eventimage/:organizationId', (req, res) => {
     const organizationId = req.params.organizationId;
   
-    connection.query('SELECT imageOfEvent_posters FROM organizationEvents WHERE organizationID = ?', [organizationId], (err, results) => {
+    connection.query('SELECT imageOfEvent_posters FROM organizationEvents WHERE eventID = ?', [organizationId], (err, results) => {
       if (err) {
         console.error('Error retrieving image:', err);
         return res.status(500).send('Error retrieving image');

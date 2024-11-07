@@ -78,18 +78,16 @@ function createCard(organization) {
 
 // This function creates the structure for each charity's total donation display
 function displayTopCollectedCharityDonations(organization, index) {
-    // Create the charity donation div
     const charityDonationDiv = document.createElement('div');
     charityDonationDiv.classList.add('charity-total-donations');
     if(index == 0) {
         charityDonationDiv.classList.add('top-total-donations');
     }
 
-    // Create the logo div and add the image
     const logoDiv = document.createElement('div');
     logoDiv.classList.add('logo');
     const logoImg = document.createElement('img');
-    logoImg.src = '/api/logo/' + organization.organizationID; // use default if no profile picture
+    logoImg.src = '/api/logo/' + organization.organizationID;
     logoImg.alt = organization.organizationName;
     logoDiv.appendChild(logoImg);
 
@@ -97,17 +95,15 @@ function displayTopCollectedCharityDonations(organization, index) {
     const charityName = document.createElement('h3');
     charityName.textContent = organization.organizationName;
 
-    // Create the donation amount display
     const charityDonationAmount = document.createElement('h3');
     charityDonationAmount.classList.add('charity-donations-amount');
     charityDonationAmount.textContent = `PHP ${organization.totalDonationCollected.toLocaleString()}`;
 
-    // Append all parts to the charity donation div
     charityDonationDiv.appendChild(logoDiv);
     charityDonationDiv.appendChild(charityName);
     charityDonationDiv.appendChild(charityDonationAmount);
 
-    return charityDonationDiv; // Return the newly created charity donation div
+    return charityDonationDiv;
 }
 
 
