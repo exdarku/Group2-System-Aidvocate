@@ -478,6 +478,11 @@ nav .links button {
 .events-panel .card .details .header .title {
     display: block;
 }
+.events-panel .card .details .header .title h2{
+    font-family: "Poppins";
+    font-size: large;
+    font-weight: bold;
+}
 
 .events-panel .card .details .header .title .status {
     color: #DDA840;
