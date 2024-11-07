@@ -15,10 +15,13 @@
    - [Get Organization QR Code](#10-get-organization-qr-code)
    - [Get a specific Donation Data](#11-get-a-donation-data)
    - [Get all donations](#12-get-all-donations)
+   - [Get all events](#13-get-all-events)
+   - [Get a specific event](#14-get-an-event-data)
 3. [Authentication Endpoints](#authentication-endpoints)
    - [User Authentication](#1-user-authentication)
    - [User Login](#2-user-login)
    - [User Registration](#3-user-registration)
+
 
 ---
 
@@ -174,6 +177,16 @@
 - **Endpoint**: `/api/get/alldonations/`
 - **Method**: `GET`
 - **Description**: Retrieves all donations in the database.
+
+### 13. **Get ALL events**
+- **Endpoint**: `/api/get/allevents/`
+- **Method**: `GET`
+- **Description**: Retrieves all organization events in the database.
+
+### 14. **Get an event data**
+- **Endpoint**: `/api/get/donation/:eventID`
+- **Method**: `GET`
+- **Description**: Retrieves a specific organization event in the database.
 
 ---
 

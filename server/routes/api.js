@@ -213,6 +213,21 @@ const getImageMimeType = (imageData) => {
     });
   });
 
+  router.get('/get/allevents', (req, res) => {
+    connection.query('SELECT * FROM organizationEvents', (err, results) => {
+        if (err) throw err;
+        res.status(200).json(results);
+    });
+  });
+
+  router.get('/get/event/:eventID', (req, res) => {
+    const eventID = req.params.eventID;
+    connection.query('SELECT * FROM organizationEvents WHERE eventID = ?', [eventID], (err, results) => {
+        if (err) throw err;
+        res.status(200).json(results);
+    });
+  });
+
   router.get('/eventimage/:organizationId', (req, res) => {
     const organizationId = req.params.organizationId;
   
