@@ -64,6 +64,21 @@ router.post('/verifydonation', ensureAuthenticated, (req, res) => {
     });
 });
 
+router.get('/get/alldonations', ensureAuthenticated, (req, res) => {
+    connection.query('SELECT * FROM donationTable', (err, results) => {
+        if (err) throw err;
+        res.status(200).json(results);
+    });
+});
+
+router.get('/get/donation/:donationID', ensureAuthenticated, (req, res) => {
+    const donationID = req.params.donationID;
+    connection.query('SELECT * FROM donationTable WHERE donationID = ?', [donationID], (err, results) => {
+        if (err) throw err;
+        res.status(200).json(results);
+    });
+});
+
 router.get('/getorganizations', (req, res) => {
     connection.query('SELECT * FROM organizationData', (err, results) => {
         if (err) throw err;
