@@ -185,7 +185,7 @@
 - **Description**: Retrieves all organization events in the database.
 
 ### 14. **Get an event data**
-- **Endpoint**: `/api/get/donation/:eventID`
+- **Endpoint**: `/api/get/event/:eventID`
 - **Method**: `GET`
 - **Description**: Retrieves a specific organization event in the database.
 
