@@ -390,6 +390,17 @@ nav .links button {
     align-items: center;
     padding: 5px 0;
     display: flex; /* Aligns items in a row */
+    text-align: left;
+    justify-content: left;
+}
+
+.mainContent .donations-panel .recent-donations-panel .card .charity-recent-donations img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.mainContent .donations-panel .recent-donations-panel .card .charity-recent-donations h3 {
+    font-size: medium;
 }
 
 .mainContent .donations-panel .recent-donations-panel .card .charity-recent-donations > * {
