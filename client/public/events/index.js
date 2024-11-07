@@ -141,6 +141,12 @@ class EventCard {
         const button = document.createElement('button');
         button.classList.add('seeMoreButton');
         button.textContent = 'See more';
+
+            // Adding onclick event listener
+        button.onclick = () => {
+            window.location.href = `/event?eventID=${this.event.eventID}`;
+        };
+
         return button;
     }
 
