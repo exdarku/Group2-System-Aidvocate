@@ -418,6 +418,24 @@ nav .links button {
     width: 100%;
     height: auto;
 }
+
+.mainContent .events-panel .header{
+    display: flex;
+    width: 100%;
+}
+
+.mainContent .events-panel .header #createEvent{
+    color: #FBFBF5;
+    background: #1C1D28;
+    border: none;
+    font-weight: 600;
+    font-size: medium;
+    margin: 0 20px;
+    padding: 5px 20px;
+    border-radius: 10px;
+    margin-left: auto;
+}
+
 .mainContent .events-panel .events {
     margin-top: 5px;
     padding: 0px 40px;
@@ -524,7 +542,7 @@ nav .links button {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    overflow-y: auto;
+    overflow-y: hidden;
 }
 
 /* Modal content box styling */
@@ -586,7 +604,7 @@ nav .links button {
     display: block;
 }
 
-.add-modal .content form input[type="text"], input[type="number"], input[type=email] {
+.add-modal .content form input[type="text"], input[type="number"], input[type=email], select {
     background-color: #DDDBD7;
     color: #535359;
     border: none;
@@ -636,10 +654,44 @@ nav .links button {
     padding: 10px 20px;
     border-radius: 5px;
     font-weight: bold;
+    margin-bottom: 20px;
 }
 .add-modal .content form input[type=file]::-webkit-file-upload-button:hover {
     background-color: #d1ccc3;
 }
+
+/* Style for the time input */
+.add-modal .content form input[type="time"] {
+    background-color: #DDDBD7;
+    border: solid #d1ccc3 1px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+/* Hover effect for the time input */
+.add-modal .content form input[type="time"]:hover {
+    background-color: #d1ccc3;
+}
+
+/* Style for the date input */
+.add-modal .content form input[type="date"] {
+    background-color: #DDDBD7;
+    border: solid #d1ccc3 1px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+/* Hover effect for the date input */
+.add-modal .content form input[type="date"]:hover {
+    background-color: #d1ccc3;
+}
+
 
 
 .add-modal .content form button {
