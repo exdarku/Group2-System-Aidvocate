@@ -244,6 +244,9 @@ nav .links button {
 .mainContent .charities .panel .card .header .logo img {
     width: 30px;
 }
+.logo img {
+    border-radius: 50%;
+}
 
 .mainContent .charities .panel .card .header .name-donations > *{
     margin: -2px 0;
@@ -278,12 +281,14 @@ nav .links button {
     display: flex;
     margin: 10px 10px;
     font-size: small;
+    align-items: center;
 }
 .mainContent .charities .panel .card .details > *{
     margin-right: 10px;
 }
 .mainContent .charities .panel .card .details img{
     width: 20px;
+    height: 20px;
 }
 
 
