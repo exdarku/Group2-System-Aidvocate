@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kadwa:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
     <title>Aidvocate</title>
 </head>
 <body>
@@ -22,38 +22,56 @@
 
         <!-- Navigation Links -->
         <div class="links">
-            <a href="../../public/">Home</a>
-            <a href="../../public/#spotlight">Spotlight Causes</a>
-            <a href="../#charities">Charities</a>
-            <a href="../events/">Events</a>
-            <a href="../../public/#about-us">About Us</a>
+            <a href="/">Home</a>
+            <a href="/#spotlight">Spotlight Causes</a>
+            <a href="/#charities">Charities</a>
+            <a href="/events">Events</a>
+            <a href="/#about-us">About Us</a>
 
             <a href="../charities/"><button>Get Involved</button></a>
         </div>
     </nav>
 
     <div class="hero">
-        <h1>HELP THE CATS</h1>
+        <h1 id="eventName">EVENT NAME</h1>
     </div>
     
     <div class="mainContent">
 
         <div class="Left-Side">
-            <img src="../images/event-pic.png" alt="">
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis ipsam, reprehenderit eaque deserunt totam suscipit omnis, iste sed earum, unde rem! Assumenda modi laborum quibusdam iure, delectus perferendis possimus in accusamus pariatur hic veniam beatae amet similique quae temporibus eaque natus labore eos! Asperiores repellat eum consectetur magni vero nulla molestias doloribus, qui saepe incidunt odit atque distinctio quisquam assumenda sed sapiente temporibus itaque reiciendis, in modi similique culpa minima vel. Voluptatum nostrum iste soluta facere est magnam eum facilis assumenda a eos, quod placeat rerum natus qui, sit cum quas pariatur consequuntur optio. Nisi possimus quas aspernatur mollitia quis ducimus accusantium, incidunt labore aliquid quia dolorem officiis modi facere veritatis eum aut repellat fuga minus distinctio. Maiores natus quis repellendus. Ad aut voluptas non nobis? Quae officiis commodi molestias quod voluptate dolores perferendis incidunt tenetur voluptates laboriosam quaerat, placeat sequi nisi expedita doloremque odit ea dolore temporibus veniam, aliquid repellat ad, mollitia unde minus? Quos ipsa illum suscipit omnis veniam? Reiciendis excepturi autem eaque necessitatibus molestias aliquam corporis. Suscipit amet numquam, maxime vel repudiandae corporis saepe atque dicta nihil? Doloribus, incidunt quaerat aliquid nesciunt eius laborum repellat reprehenderit cumque unde, fuga deleniti, doloremque ab corporis ipsum neque labore tenetur.</p>
+            <img src="" alt="Event Poster" id="eventPoster">
+            <h4>ORGANIZED BY</h4>
+            <h1 id="eventOrganization">ORGANIZATION NAME</h1>
         </div>
 
 
         <div class="Right-Side">
             <div class="section">
+                <button>Donate Here</button>
                 <h2>DETAILS</h2>  
-            </div>
+                <h4 class="details-header">Contact Details</h4>
 
-            <div class="section">
-                
+                <div class="details">
+                    <img src="../images/email.png" alt="">
+                    <p id="charityEmail">Charity email</p>
+                </div>
+                <div class="details">
+                    <img src="../images/phone.png" alt="">
+                    <p id="charityPhoneNumber">Charity phone number</p>
+                </div>
+                <div class="details">
+                    <img src="../images/phone.png" alt="">
+                    <p id="charityContactNumber">Charity contact number</p>
+                </div>
+                <div class="details">
+                    <img src="../images/location.png" alt="">
+                    <p id="eventLocation">Location</p>
+                </div>
+
+                <h4 class="details-header">About the venue</h4>
+                <div id="venueMap" class="mapouter">
+                    <!-- The map will be inserted here dynamically -->
+                </div>
             </div>
              
         </div>
@@ -84,6 +102,6 @@
         <p class="license">© Aidvocate, All Rights Reserved 2024</p>
     </footer>
 
-
+    <script src="index.js"></script>
 </body>
 </html>
