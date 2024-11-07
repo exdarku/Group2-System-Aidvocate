@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-
     const eventsContainer = document.querySelector('.charity');
+    const searchInput = document.querySelector('.search-input');
+    const noMatchMessage = document.querySelector('.no-match-found');
+    let allCharities = []; // To store all charities data
 
     // Function to create a card
     function createCard(charityName, charityDescription, organizationID) {
@@ -8,15 +10,14 @@ document.addEventListener("DOMContentLoaded", () => {
         card.classList.add('card');
     
         // Set the background image for the card directly here
-        card.style.backgroundImage = "url('../api/image/" + organizationID + "')";
+        card.style.backgroundImage = `url('../api/image/${organizationID}')`;
         card.style.filter = "none";
 
         const background = document.createElement('div');
         background.classList.add('background');
-        background.style.backgroundImage = "url('../api/image/" + organizationID + "')";
+        background.style.backgroundImage = `url('../api/image/${organizationID}')`;
         card.appendChild(background);
 
-    
         const button = document.createElement('button');
         const img = document.createElement('img');
         img.src = '../images/handIcon.png';
@@ -47,18 +48,44 @@ document.addEventListener("DOMContentLoaded", () => {
         return card;
     }
     
+    // Function to display charity cards
+    function displayCharities(charities) {
+        eventsContainer.innerHTML = ''; // Clear existing charities
 
-    // Getting the data from backend
-    fetch('/api/getorganizations')
-    .then(response => response.json())
-    .then(data => {
-        data.forEach(charity => {
-            eventsContainer.appendChild(createCard(charity.organizationName, charity.organizationDescription, charity.organizationID));
+        charities.forEach(charity => {
+            eventsContainer.appendChild(createCard(charity.organizationName, charity.organizationDescription.slice(0, 80) + "...", charity.organizationID));
         });
-    })
-    .catch(error => {
-        console.error('Error fetching data:', error);
+
+        // Show or hide "No Match Found" message
+        if (charities.length === 0) {
+            noMatchMessage.style.display = 'block';
+        } else {
+            noMatchMessage.style.display = 'none';
+        }
+    }
+
+    // Fetching the data from backend
+    fetch('/api/getorganizations')
+        .then(response => response.json())
+        .then(data => {
+            allCharities = data; // Save all charities data
+            displayCharities(allCharities); // Display all charities initially
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+
+    // Event listener for search input
+    searchInput.addEventListener('input', function () {
+        const searchTerm = searchInput.value.toLowerCase();
+
+        // Filter charities based on the search term
+        const filteredCharities = allCharities.filter(charity => 
+            charity.organizationName.toLowerCase().includes(searchTerm) ||
+            charity.organizationDescription.toLowerCase().includes(searchTerm)
+        );
+
+        // Display the filtered charities
+        displayCharities(filteredCharities);
     });
 });
-
-

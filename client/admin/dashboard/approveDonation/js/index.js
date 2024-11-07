@@ -45,8 +45,10 @@ function createCard(organization) {
     cardDonations.classList.add('card-donations');
     const donationAmount = document.createElement('h2');
     donationAmount.textContent = `PHP ${organization.totalDonationCollected.toLocaleString()}`;
-
+    const donationsToday = document.createElement('p');
+    donationsToday.textContent = '2 donations today'; // Placeholder for today’s donations
     cardDonations.appendChild(donationAmount);
+    cardDonations.appendChild(donationsToday);
     card.appendChild(cardDonations);
 
     // Create the details section for representative
@@ -78,16 +80,18 @@ function createCard(organization) {
 
 // This function creates the structure for each charity's total donation display
 function displayTopCollectedCharityDonations(organization, index) {
+    // Create the charity donation div
     const charityDonationDiv = document.createElement('div');
     charityDonationDiv.classList.add('charity-total-donations');
     if(index == 0) {
         charityDonationDiv.classList.add('top-total-donations');
     }
 
+    // Create the logo div and add the image
     const logoDiv = document.createElement('div');
     logoDiv.classList.add('logo');
     const logoImg = document.createElement('img');
-    logoImg.src = '/api/logo/' + organization.organizationID;
+    logoImg.src = '/api/logo/' + organization.organizationID; // use default if no profile picture
     logoImg.alt = organization.organizationName;
     logoDiv.appendChild(logoImg);
 
@@ -95,15 +99,17 @@ function displayTopCollectedCharityDonations(organization, index) {
     const charityName = document.createElement('h3');
     charityName.textContent = organization.organizationName;
 
+    // Create the donation amount display
     const charityDonationAmount = document.createElement('h3');
     charityDonationAmount.classList.add('charity-donations-amount');
     charityDonationAmount.textContent = `PHP ${organization.totalDonationCollected.toLocaleString()}`;
 
+    // Append all parts to the charity donation div
     charityDonationDiv.appendChild(logoDiv);
     charityDonationDiv.appendChild(charityName);
     charityDonationDiv.appendChild(charityDonationAmount);
 
-    return charityDonationDiv;
+    return charityDonationDiv; // Return the newly created charity donation div
 }
 
 
@@ -173,3 +179,102 @@ document.getElementById('dateToDay').textContent = formattedDate;
 
 
 document.getElementById('userGreeting').textContent = `Hello, ${sessionStorage.getItem("firstName")}!`;
+
+
+const selectElement = document.getElementById('unverifiedDonationsBox');
+
+// Add a placeholder option initially
+const placeholderOption = document.createElement('option');
+placeholderOption.textContent = "Select a donation";
+placeholderOption.value = "";
+placeholderOption.disabled = true;
+placeholderOption.selected = true;
+selectElement.appendChild(placeholderOption);
+
+let selectedOrganization;
+// Event listener for when the select option changes
+selectElement.addEventListener('change', () => {
+    // Get the value of the selected option
+    const selectedOrganization = selectElement.value;
+    
+    // Find the selected <option> element
+    const selectedOption = selectElement.querySelector(`option[value="${selectedOrganization}"]`);
+    
+    // Get the data stored in the selected option
+    const donatorName = selectedOption.getAttribute('data-donatorName');
+    const donationAmount = selectedOption.getAttribute('data-donationAmount');
+    
+    // Call the function to update the text boxes with the selected data
+    changeTextBoxValues(donatorName, donationAmount);
+    
+    // Show the data fields
+    document.querySelector('.dataFields').style.display = "block";
+});
+
+function changeTextBoxValues(donatorName, amount) {
+    document.getElementById('donatorNameTextBox').value = donatorName;
+    document.getElementById('donationAmountTextBox').value = amount;
+}
+
+// Fetch donations and populate the select dropdown
+fetch('http://localhost:3000/api/get/alldonations', {
+    method: "GET"
+})
+    .then(response => response.json())
+    .then(donations => {
+        donations.forEach(async (donation) => {
+            if (donation.Verified != true) {
+                const newOption = document.createElement('option');
+                newOption.value = donation.OrganizationID;
+
+                try {
+                    const organizationResponse = await fetch('http://localhost:3000/api/get/organization', {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({"organizationID": donation.OrganizationID})
+                    });
+
+                    const organizationData = await organizationResponse.json();
+                    
+                    newOption.textContent = `${organizationData[0].organizationName} | Donation #${donation.DonationID}`;
+                    
+                    // Store additional data in the option element
+                    newOption.setAttribute('data-donatorName', donation.DonatorName);
+                    newOption.setAttribute('data-donationAmount', donation.DonationAmount);
+                    newOption.setAttribute('data-donationId', donation.DonationID); // Add DonationID attribute
+
+                    selectElement.appendChild(newOption);
+                } catch (error) {
+                    console.error('Error fetching organization data:', error);
+                }
+            }
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching donations:', error);
+    });
+
+document.getElementById('approveButton').addEventListener('click', () => {
+    const selectedOption = selectElement.options[selectElement.selectedIndex];
+    const donationID = selectedOption.getAttribute('data-donationId'); // Use the donation ID from the attribute
+
+    fetch('http://localhost:3000/api/verifydonation', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            "DonationID": donationID
+        })
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            alert("Donation has been verified!");
+        })
+        .catch(error => {
+            console.error('Error verifying donation:', error);
+        });
+});

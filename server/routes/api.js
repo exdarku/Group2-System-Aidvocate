@@ -46,6 +46,7 @@ router.post('/donate', (req, res) =>{
 
 router.post('/verifydonation', ensureAuthenticated, (req, res) => {
     const { DonationID } = req.body;
+    console.log("Donation: " + DonationID);
 
     connection.query('UPDATE donationTable SET Verified = true WHERE DonationID = ?', [DonationID], (err, result) => {
         if (err) {
@@ -86,9 +87,17 @@ router.get('/getorganizations', (req, res) => {
     });
 });
 
-router.get('/get/organization', (req, res) => {
+router.post('/get/organization', (req, res) => {
     const { organizationID } = req.body;
     connection.query('SELECT * FROM organizationData WHERE organizationID = ?', [organizationID], (err, results) => {
+        if (err) throw err;
+        res.status(200).json(results);
+    });
+});
+
+router.get('/get/donatorcount/:organizationID', ensureAuthenticated, (req, res) => {
+    const organizationID = req.params.organizationID;
+    connection.query('SELECT COUNT(*) AS DonatorCount FROM donationTable WHERE organizationID = ? AND verified = 1', [organizationID], (err, results) => {
         if (err) throw err;
         res.status(200).json(results);
     });
@@ -231,7 +240,7 @@ const getImageMimeType = (imageData) => {
   router.get('/eventimage/:organizationId', (req, res) => {
     const organizationId = req.params.organizationId;
   
-    connection.query('SELECT imageOfEvent_posters FROM organizationEvents WHERE organizationID = ?', [organizationId], (err, results) => {
+    connection.query('SELECT imageOfEvent_posters FROM organizationEvents WHERE eventID = ?', [organizationId], (err, results) => {
       if (err) {
         console.error('Error retrieving image:', err);
         return res.status(500).send('Error retrieving image');

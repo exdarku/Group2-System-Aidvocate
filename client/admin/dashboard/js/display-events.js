@@ -47,7 +47,7 @@ class EventCard {
         title.classList.add('title');
 
         const status = document.createElement('h5');
-        const eventTitle = document.createElement('h3');
+        const eventTitle = document.createElement('h2');
         eventTitle.textContent = this.event.nameOfEvent;
         
         title.appendChild(status);
@@ -76,7 +76,7 @@ class EventCard {
     createDescription() {
         const description = document.createElement('p');
         description.classList.add('description');
-        description.textContent = this.event.descriptionOfEvent.slice(0, 100) + "...";
+        description.textContent = this.event.descriptionOfEvent.slice(0, 100)+"...";
         return description;
     }
 
@@ -103,14 +103,19 @@ class EventCard {
         return infosDate;
     }
 
+    // Helper function to format time to 12-hour format with AM/PM
     formatTime(time) {
-        const [hours, minutes] = time.split(':');
+        // Assuming time is in HH:mm:ss format (e.g., "12:00:00")
+        const [hours, minutes] = time.split(':'); // Split the time into hours and minutes
+
         let hour = parseInt(hours, 10);
-        const ampm = hour >= 12 ? 'PM' : 'AM';
-        
-        if (hour > 12) hour -= 12;
-        if (hour === 0) hour = 12;
-        
+        const ampm = hour >= 12 ? 'PM' : 'AM'; // Determine AM or PM
+
+        // Convert hour to 12-hour format
+        if (hour > 12) hour -= 12; // 24-hour to 12-hour conversion
+        if (hour === 0) hour = 12; // Handle midnight case
+
+        // Return the formatted time
         return `${hour}:${minutes} ${ampm}`;
     }
 
@@ -146,7 +151,7 @@ class EventCard {
 
     createEventImage() {
         const eventImage = document.createElement('img');
-        eventImage.src = '/api/eventimage/' + this.event.eventID;
+        eventImage.src = '/api/eventimage/'+this.event.eventID;
         eventImage.alt = 'Event Image';
         return eventImage;
     }
@@ -154,55 +159,18 @@ class EventCard {
 
 // Fetch and Display Events
 const eventsContainer = document.querySelector('.events');
-const noMatchMessage = document.querySelector('.no-match-found'); // Get the "No Match Found" message directly
-const searchInput = document.querySelector('.search-input');
 
-let allEvents = [];
-
-// Fetch events and display them
 fetch('http://localhost:3000/api/get/allevents/', {
     method: 'GET'
 })
 .then(response => response.json())
 .then(events => {
-    allEvents = events; // Save all events
-    displayEvents(events); // Display all events initially
-})
-.catch(error => {
-    console.error('Error:', error);
-});
-
-// Function to display event cards
-function displayEvents(events) {
-    eventsContainer.innerHTML = ''; // Clear existing events (but not the "No Match Found" message)
-
-    let hasEvents = false; // Flag to track if there are events to display
-
-    // Append the event cards
+    eventsContainer.innerHTML = ''; // Clear existing events
     events.forEach(eventData => {
         const eventCard = new EventCard(eventData);
         eventsContainer.appendChild(eventCard.createCard());
-        hasEvents = true; // If at least one event is displayed
     });
-
-    // Show or hide "No Match Found" message based on whether there are events
-    if (events.length === 0 || !hasEvents) {
-        noMatchMessage.style.display = 'block'; // Show the "No Match Found" message if no events
-    } else {
-        noMatchMessage.style.display = 'none'; // Hide the message if there are events
-    }
-}
-
-// Search event based on event name
-searchInput.addEventListener('input', function () {
-    const searchTerm = searchInput.value.toLowerCase();
-
-    // Filter events by title, description, or location
-    const filteredEvents = allEvents.filter(event => 
-        event.nameOfEvent.toLowerCase().includes(searchTerm) ||
-        event.descriptionOfEvent.toLowerCase().includes(searchTerm) ||
-        event.location.toLowerCase().includes(searchTerm)
-    );
-
-    displayEvents(filteredEvents); // Display filtered events
+})
+.catch(error => {
+    console.error('Error:', error);
 });
