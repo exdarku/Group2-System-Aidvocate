@@ -46,6 +46,7 @@ router.post('/donate', (req, res) =>{
 
 router.post('/verifydonation', ensureAuthenticated, (req, res) => {
     const { DonationID } = req.body;
+    console.log("Donation: " + DonationID);
 
     connection.query('UPDATE donationTable SET Verified = true WHERE DonationID = ?', [DonationID], (err, result) => {
         if (err) {
@@ -86,7 +87,7 @@ router.get('/getorganizations', (req, res) => {
     });
 });
 
-router.get('/get/organization', (req, res) => {
+router.post('/get/organization', (req, res) => {
     const { organizationID } = req.body;
     connection.query('SELECT * FROM organizationData WHERE organizationID = ?', [organizationID], (err, results) => {
         if (err) throw err;

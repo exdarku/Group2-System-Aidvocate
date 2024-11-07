@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dashboard/approveDonation/style.css">
+
+    <!-- Poppins font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kadwa:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- Bebas Neue font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kadwa:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/x-icon" href="images/logo-only.ico">
+    <title>Aidvocate | Admin</title>
+</head>
+<body>
+
+    <nav>
+        <!-- Aidvocate Logo -->
+        <a href=""><img src="images/logo.png" alt="LOGO"></a>
+
+        <!-- Navigation Links -->
+        <div class="links">
+            <a href="" id="userGreeting">Hello, Laurence!</a>
+        </div>
+    </nav>
+
+    <div class="contents">
+        
+        <!-- Left Bar -->
+        <div class="leftBar">
+    
+            <div class="leftBar-items">
+                <!-- LINK OR NAVIGATIONS -->
+                <a href="/admin/dashboard" ><img src="dashboard/images/dashboardIcon.png" alt="">Dashboard</a>
+                <a href=""><img src="dashboard/images/calendarIcon.png" alt="">Calendar</a>
+                <a href="" class="selected" ><img src="dashboard/images/emailIcon.png" alt="">Verify Donations</a>
+                <a href=""><img src="dashboard/images/settingIcon.png" alt="">Settings</a>
+    
+                <!-- LOGOUT BUTTON -->
+                <a href="/auth/logout" class="selected logout" ><img src="images/logout.png" alt="">Logout</a>
+            </div>
+            
+        </div> <!-- END OF LEFTBAR-->
+    
+        <div class="mainContent">
+    
+            <p id="dateToDay">Nov 01, 2024</p>
+
+            <div id="add-modal" class="add-modal">
+                <div class="content">
+                    <h2>Verify Donations</h2>
+        
+                    <form id="registrationForm" enctype="multipart/form-data">
+                        <div class="divide-input">
+                            <div class="input">
+                                <label for="organizationName">Unverified Donations</label>
+                                <select name="unverifiedDonations" id="unverifiedDonationsBox" class="styled-select" ></select>
+                            </div>
+                        </div>
+                        <div class="dataFields">
+                            <div class="divide-input">
+                                <div class="input">
+                                    <label for="donatorName">Donator Name</label>
+                                    <input type="text" id="donatorNameTextBox" name="donatorName" placeholder="Donator Name" required>
+                                </div>
+            
+                                <div class="input">
+                                    <label for="donationAmount">Amount</label>
+                                    <input type="text" id="donationAmountTextBox" name="donationAmount" placeholder="Amount" required>
+                                </div>
+                            </div>
+            
+                            <div class="divide-input">
+                                <div class="input">
+                                    <label for="representativeName">Proof</label>
+                                    <img src="" alt="">
+                                </div>
+            
+                            </div>
+                            <div class="divide-input">
+                                <button id="declineDonation">Decline</button>
+                                <button type="submit" id="approveButton">Approve</button>
+                            </div>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        
+        
+    
+        </div> <!-- END OF MAIN CONTENT-->
+
+    </div>
+
+
+    <script src="dashboard/approveDonation/js/index.js"></script>
+    <script src="dashboard/approveDonation/js/add.js"></script>
+    <script src="dashboard/approveDonation/js/recentDonation.js"></script>
+    <script src="dashboard/approveDonation/js/events.js"></script>
+</body>
+</html>

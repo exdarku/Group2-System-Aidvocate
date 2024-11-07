@@ -39,7 +39,7 @@
                 <!-- LINK OR NAVIGATIONS -->
                 <a href="" class="selected"><img src="images/dashboardIcon.png" alt="">Dashboard</a>
                 <a href=""><img src="images/calendarIcon.png" alt="">Calendar</a>
-                <a href=""><img src="images/emailIcon.png" alt="">Emails</a>
+                <a href="/admin/approvedonation" id="openApprovalModalButton"><img src="images/emailIcon.png" alt="">Approve Donations</a>
                 <a href=""><img src="images/settingIcon.png" alt="">Settings</a>
     
                 <!-- LOGOUT BUTTON -->
@@ -112,6 +112,78 @@
         <div class="content">
             <span class="close" onclick="closeModal()">&times;</span>
             <h2>Add New Charity</h2>
+
+            <form id="registrationForm" enctype="multipart/form-data">
+                <div class="divide-input">
+                    <div class="input">
+                        <label for="organizationName">Charity Name</label>
+                        <input type="text" id="organizationName" name="organizationName" placeholder="Enter charity name" required>
+                    </div>
+
+                    <div class="input" style="width: 40%;">
+                        <label for="organizationAbbreviation">Abbreviation</label>
+                        <input type="text" id="organizationAbbreviation" name="organizationAbbreviation" placeholder="Enter abbreviation" required>
+                    </div>
+                </div>
+
+                <div class="divide-input">
+                    <div class="input">
+                        <label for="organizationAddress">Location</label>
+                        <input type="text" id="organizationAddress" name="organizationAddress" placeholder="Enter location" required>
+                    </div>
+
+                    <div class="input">
+                        <label for="organizationPhoneNumber">Contact Number</label>
+                        <input type="text" id="organizationPhoneNumber" name="organizationPhoneNumber" placeholder="Enter contact number" required>
+                    </div>
+                </div>
+
+                <div class="divide-input">
+                    <div class="input">
+                        <label for="representativeName">Contact Person</label>
+                        <input type="text" id="representativeName" name="representativeName" placeholder="Enter name" required>
+                    </div>
+
+                    <div class="input">
+                        <label for="organizationPhoneNumber">Email</label>
+                        <input type="email" id="organizationPhoneNumber" name="organizationPhoneNumber" placeholder="Enter email" required>
+                    </div>
+
+                    <div class="input">
+                        <label for="representativeContactNumber">Contact Person Number</label>
+                        <input type="text" id="representativeContactNumber" name="representativeContactNumber" placeholder="Enter contact number" required>
+                    </div>
+
+                </div>
+
+                <label for="organizationDescription">Description</label>
+                <textarea id="organizationDescription" name="organizationDescription" rows="4" placeholder="Enter description" required></textarea>
+
+                <label for="totalDonationCollected">Total Donation Collected</label>
+                <input type="number" id="totalDonationCollected" name="totalDonationCollected" step="0.01" value="0.00" placeholder="Enter donation" required>
+
+                <div class="divide-input">
+                    <div class="input">
+                        <label for="organizationProfilePicture">Logo</label>
+                        <input type="file" id="organizationProfilePicture" name="organizationProfilePicture" accept="image/*" required>
+                    </div>
+                    
+                    <div class="input">
+                        <label for="organizationFeaturedPicture">Featured Picture</label>
+                        <input type="file" id="organizationFeaturedPicture" name="organizationFeaturedPicture" accept="image/*" required>
+                    </div>
+                </div>
+
+
+                <button type="submit">Register Organization</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="approval-modal" class="add-modal">
+        <div class="content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Approve Donation</h2>
 
             <form id="registrationForm" enctype="multipart/form-data">
                 <div class="divide-input">

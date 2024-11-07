@@ -1,0 +1,736 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins";
+    scroll-behavior: smooth;
+}
+
+h1 {
+    font-family: "Bebas Neue";
+}
+
+body, html{
+    background-color: #fffbf3;
+    height: 100%;
+    overflow: hidden;
+}
+
+nav {
+    display: flex;              /* Aligns items horizontally */
+    align-items: center;        /* Centers items vertically */
+    justify-content: space-between; /* Ensures space between logo and links */
+    background-color: #1C1D28;
+    padding: 20px 30px;
+    width: 100%;
+    height: 10%;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+nav a img {
+    width: 150px;               /* Sets a fixed width for the logo */
+    height: auto;               /* Keeps the image aspect ratio */
+}
+
+nav .links {
+    display: flex;              /* Ensures links are in a row */
+    align-items: center;
+}
+
+nav .links a {
+    margin: 0 10px;
+    color: #FBFBF5;
+    text-decoration: none;
+}
+
+nav .links button {
+    background-color: #FCD384;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-weight: 600;
+    border: none;               /* Remove default border */
+    cursor: pointer;
+}
+
+
+.hero {
+    text-align: center;
+    display: flex;
+    flex-direction: column;        /* Stacks h1 and p vertically */
+    justify-content: center;       /* Centers content vertically */
+    align-items: center; 
+    width: 100%;
+    height: 90%;
+    color: #FBFBF5;
+    background-image: url('../images/hanna-morris-Eu_jjK6Z67Q-unsplash-scaled.png'); /* Replace with your image path */
+    background-size: cover;      /* Makes the image cover the entire area */
+    background-repeat: no-repeat;
+}
+
+.hero h1 {
+    font-size: 100px;
+}
+
+.hero p {
+    width: 45%;
+}
+
+.contents {
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+}
+
+.leftBar {
+    width: 20%;
+    height: 90vh;
+    background-image: url('images/world-map-draw.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 100%;
+    background-color: #FAF3DD;
+    position: fixed;
+    top: 10%;
+    left: 0;
+}
+
+.leftBar-items {
+    margin: 50px 30px;
+    position: relative;
+    height: 100%;
+}
+
+.leftBar-items a {
+    display: block;            /* Makes the a tag behave like a block element */
+    border-radius: 20px;
+    padding: 20px;
+    font-weight: 600;
+    color: #000;
+    text-decoration: none;
+    margin: 10px 0;
+    transition: background-color 0.1s, color 0.1s; /* Smooth hover transition */
+    align-items: center;
+
+}
+
+.leftBar-items a.selected {
+    background-color: #2A2A2A;
+    color: #FBFBF5;
+}
+.leftBar-items a.selected img {
+    filter: brightness(0) invert(1); /* Turns the image white */
+}
+
+.leftBar-items a:hover {
+    background-color: #2A2A2A;
+    color: #FBFBF5;
+}
+
+.leftBar-items a img {
+    z-index: 1;
+    margin-right: 10px;
+}
+
+.leftBar-items a:hover img {
+    filter: brightness(0) invert(1); /* Turns the image white */
+}
+
+.leftBar-items .logout {
+    position: absolute;
+    bottom: 100px;
+    width: 100%;
+}
+
+
+.mainContent {
+    width: 80%; /* Remaining width */
+    margin-left: 20%; /* Offset to prevent overlap with leftBar */
+    padding: 20px 30px;
+    height: 90%; /* Full height for scrollable content */
+    overflow-y: auto; /* Allows scrolling within mainContent */
+    background-color: #ffffff;
+    color: #535359;
+}
+
+.mainContent > * {
+    margin: 10px 0;
+}
+
+.mainContent .title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mainContent .title #viewAll{
+    color: #2A2A2A;
+    background: none;
+    border: none;
+    text-decoration: underline;
+    font-weight: 600;
+    font-size: medium;
+    margin: 0 20px;
+}
+.mainContent .title #createCharity{
+    color: #FBFBF5;
+    background: #1C1D28;
+    border: none;
+    font-weight: 600;
+    font-size: medium;
+    margin: 0 20px;
+    padding: 5px 20px;
+    border-radius: 10px;
+    margin-left: auto;
+}
+
+.mainContent .charities .panel {
+    background-color: #EBEBEB;
+    width: 100%;
+    height: 250px;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three cards per row */
+    gap: 20px;
+    padding: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: height 0.3s ease;
+}
+
+.mainContent .charities .panel .card {
+    border-radius: 20px;
+    height: 210px;
+    padding: 20px;
+}
+
+.mainContent .charities .panel .card-blue{
+    background-color: #CDDAEA;
+}
+
+.mainContent .charities .panel .card-blue .logo{
+    background-color: #53659B;
+}
+
+.mainContent .charities .panel .card-pink{
+    background-color: #E3D6CE;
+}
+.mainContent .charities .panel .card-pink .logo{
+    background-color: #C0A796;
+}
+.mainContent .charities .panel .card-yellow{
+    background-color: #EAE3CD;
+}
+.mainContent .charities .panel .card-yellow .logo{
+    background-color: #D7D3A3;
+}
+
+.mainContent .charities .panel .card .header{
+    display: flex;
+    align-items: center;
+}
+
+.mainContent .charities .panel .card .header .logo{
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.mainContent .charities .panel .card .header .logo img {
+    width: 30px;
+}
+.logo img {
+    border-radius: 50%;
+}
+
+.mainContent .charities .panel .card .header .name-donations > *{
+    margin: -2px 0;
+}
+
+.mainContent .charities .panel .card .header .name-donations p{
+    font-size: x-small;
+    font-weight: 500;
+}
+.mainContent .charities .panel .card .header .name-donations h5{
+    font-size: medium;
+    color: #2A2A2A;
+    font-weight: 500;
+}
+.mainContent .charities .panel .card .card-donations{
+    margin: 20px 10px;
+}
+.mainContent .charities .panel .card .card-donations > *{
+    margin: -8px 0;
+}
+.mainContent .charities .panel .card .card-donations h2{
+    color: #2A2A2A;
+    font-weight: 500;
+}
+.mainContent .charities .panel .card .card-donations p{
+    color: #5C5C5C;
+    font-weight: 500;
+    opacity: 0.73;
+}
+
+.mainContent .charities .panel .card .details{
+    display: flex;
+    margin: 10px 10px;
+    font-size: small;
+    align-items: center;
+}
+.mainContent .charities .panel .card .details > *{
+    margin-right: 10px;
+}
+.mainContent .charities .panel .card .details img{
+    width: 20px;
+    height: 20px;
+}
+
+
+/* DONATIONS PANEL */
+.mainContent .donations-panel {
+    display: flex;
+    height: 230px;
+    margin: 20px 0;
+    justify-content: space-between;
+}
+.mainContent .donations-panel .total-donations-panel {
+    width: 55%;
+    margin-right: 10px;
+    height: 100%;
+}
+.mainContent .donations-panel .recent-donations-panel {
+    width: 45%;
+    margin-left: 10px;
+    height: 100%;
+}
+
+.mainContent .donations-panel .total-donations-panel .card{
+    background-color: #CDDAEA;
+    height: 100%;
+    border-radius: 20px;
+    text-align: center;
+    padding: 10px;
+    color: #2A2A2A;
+}
+.mainContent .donations-panel .total-donations-panel p{
+    font-size: small;
+}
+
+
+.mainContent .donations-panel .card > h1, h2,h3,h4,h5,h6{
+    font-weight: 600;
+    font-size: medium;
+}
+.mainContent .donations-panel .card .charity-total-donations {
+    display: flex;
+    width: 95%;
+    margin: 5px auto;
+    align-items: center;
+    padding: 5px 0;
+}
+.mainContent .donations-panel .card .charity-total-donations .logo {
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    background-color: #C0C8E5;
+}  
+.mainContent .donations-panel .card .charity-total-donations .logo img{
+    width: 30px; 
+    height: 30px;
+}  
+.top-total-donations {
+    background-color: #53659B;
+    border-radius: 10px;
+    color: #FBFBF5;
+}
+
+.mainContent .donations-panel .card .charity-total-donations > * {
+    margin: 0 10px;
+}
+
+.mainContent .donations-panel .card .charity-total-donations .charity-donations-amount {
+    margin-left: auto;
+}
+
+
+.mainContent .donations-panel .recent-donations-panel .card{
+    height: 100%;
+    background-color: #E3D6CE;
+    border-radius: 20px;
+    text-align: center;
+    padding: 10px;
+    color: #2A2A2A;
+
+}
+.mainContent .donations-panel .recent-donations-panel .card > *{
+    margin: 10px;
+
+}
+.mainContent .donations-panel .recent-donations-panel .card .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.mainContent .donations-panel .recent-donations-panel .card .charity-recent-donations {
+    background-color: #C0A796;
+    border-radius: 10px;
+    color: #FBFBF5;
+    margin: 10px auto;
+    align-items: center;
+    padding: 5px 0;
+    display: flex; /* Aligns items in a row */
+    text-align: left;
+    justify-content: left;
+}
+
+.mainContent .donations-panel .recent-donations-panel .card .charity-recent-donations img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.mainContent .donations-panel .recent-donations-panel .card .charity-recent-donations h3 {
+    font-size: medium;
+}
+
+.mainContent .donations-panel .recent-donations-panel .card .charity-recent-donations > * {
+    margin: 5px 10px;
+}
+
+.mainContent .donations-panel .recent-donations-panel .card .charity-donations-recent-amount {
+    margin-left: auto;
+}
+
+
+/* EVENTS PANEL */
+.mainContent .events-panel {
+    margin-top: 70px;
+    width: 100%;
+    height: auto;
+}
+.mainContent .events-panel .events {
+    margin-top: 5px;
+    padding: 0px 40px;
+    width: 100%;
+    border: solid #EAE3CD 2px;
+    border-radius: 40px;
+}
+
+
+/* EVENTS CARD*/
+.events-panel .card {
+    width: 100%;
+    height: 330px;
+    background-color: #FBFBF5;
+    color: #2A2A2A;
+    border-radius: 30px;
+    overflow: hidden;
+    display: flex;
+    text-align: left;
+    margin: 40px 0px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.events-panel .card:first-child, .events-panel .card:last-child {
+    margin: 40px 0px;
+}
+
+.events-panel .card .details {
+    width: 40%;
+    padding: 30px;
+}
+
+.events-panel .card .details .header {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.events-panel .card .details .header .title {
+    display: block;
+}
+
+.events-panel .card .details .header .title .status {
+    color: #DDA840;
+}
+
+.events-panel .card .details .description {
+    margin-top: 10px;
+    font-size: small;
+}
+
+.events-panel .details .infos {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    font-size: small;
+    margin-top: 10px;
+}
+
+.events-panel .details .infos-date img {
+    width: 30px;
+    margin-right: 20px;
+}
+
+.events-panel .details .infos-place img {
+    width: 25px;
+    margin-right: 22px;
+    margin-left: 3px;
+}
+
+.events-panel .seeMoreButton {
+    width: 100px;
+    margin-top: 40px;
+    padding: 10px;
+    background-color: #FCD384;
+    border: none;
+    border-radius: 20px;
+    font-weight: 700;
+}
+
+.events-panel .card img {
+    width: 60%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.events-panel .card:hover {
+    transform: translateY(-10px); /* Move the card 10px up */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Adds a shadow for a floating effect */
+}
+
+
+
+/* ADD MODAL */
+/* Modal background styling */
+.add-modal {
+    position: relative;
+    margin: 0; /* Remove centering with margin */
+    width: 100%; /* Take full width of the parent */
+    max-width: 100%; /* Prevent it from exceeding parent's width */
+    height: 100%; /* Take full height of the parent */
+    max-height: 100%; /* Prevent it from exceeding parent's height */
+}
+
+.add-modal .content {
+    position: static; /* Remove fixed positioning */
+    margin: 0; /* Remove margin */
+    padding: 20px;
+    width: 100%; /* Fill the parent container */
+    height: 100%; /* Allow content to take full height */
+    max-height: 100%; /* Prevent overflow */
+    border-radius: 20px;
+    background-color: #EBEBEB;
+    box-shadow: none; /* Remove shadow for a non-modal look */
+    color: #535359;
+    text-align: center;
+    overflow-y: auto; /* Keep overflow scrolling within the modal if needed */
+}
+
+
+.add-modal .content::-webkit-scrollbar-thumb {
+    background-color: #C1C1C1;
+    border: 4px solid transparent;
+    border-radius: 10px;
+    background-clip: padding-box; 
+}
+.add-modal .content::-webkit-scrollbar-thumb:hover {
+    background-color: #afafaf;
+}
+.add-modal .content::-webkit-scrollbar {
+    width: 20px;
+}
+
+
+/* Close button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+.add-modal .content h2 {
+    font-size: 30px;
+}
+
+.add-modal .content form {
+    display: block;
+    margin: 20px 0px;
+    padding: 20px;
+    text-align: left;
+    justify-content: left;
+}
+
+.add-modal .content form label{
+    display: block;
+}
+
+.add-modal .content form input[type="text"], input[type="number"], input[type=email] {
+    background-color: #DDDBD7;
+    color: #535359;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    padding: 20px;
+    font-size: large;
+    margin-bottom: 20px;
+}
+.add-modal .content form input::placeholder {
+    color: #C1C0BF;
+}
+
+.add-modal .content form .divide-input {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 40px;
+}
+.add-modal .content form .divide-input .input {
+    display: block;
+    width: 100%;
+}
+
+.add-modal .content form textarea {
+    background-color: #DDDBD7;
+    color: #535359;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    padding: 20px;
+    font-size: large;
+    margin-bottom: 20px;
+    
+    resize: none; /* Prevent resizing */
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 200px; /* Set a max height to trigger scrolling when text exceeds this height */
+}
+.add-modal .content form textarea::placeholder {
+    color: #C1C0BF;
+}
+
+.add-modal .content form input[type=file]::-webkit-file-upload-button {
+    background-color: #DDDBD7;
+    border: solid #d1ccc3 1px;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.add-modal .content form input[type=file]::-webkit-file-upload-button:hover {
+    background-color: #d1ccc3;
+}
+
+
+.add-modal .content form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #FCD384;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.add-modal .content form button:hover {
+    background-color: #fbb13c;
+}
+
+
+/* FOR ALL BUTTON REDUCE BRIGHTNESS WHEN HOVER */
+button:hover {
+    filter: brightness(0.9);
+    cursor: pointer;
+}
+
+
+/* Styled Select Element */
+.styled-select {
+    background-color: #DDDBD7; /* Same background as form inputs */
+    color: #535359; /* Same text color as form inputs */
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    padding: 20px;
+    font-size: large;
+    margin-bottom: 20px;
+    appearance: none; /* Remove default arrow in most browsers */
+    -webkit-appearance: none; /* Remove default arrow in Webkit browsers */
+    -moz-appearance: none; /* Remove default arrow in Firefox */
+    cursor: pointer;
+    text-align: left; /* Align text to the left inside the select box */
+}
+
+.styled-select:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add subtle focus shadow */
+}
+
+/* Custom Arrow for Select Element */
+.styled-select::-ms-expand {
+    display: none; /* Hide the default arrow in IE */
+}
+
+/* Dropdown arrow icon - Adjusting for all browsers */
+.styled-select::after {
+    content: '\25BC'; /* Unicode for a downward arrow */
+    font-size: 16px;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #535359; /* Match the text color */
+}
+
+/* Hover Effects */
+.styled-select:hover {
+    background-color: #C1C0BF; /* Hover background */
+}
+
+/* Active state - when select is clicked */
+.styled-select:active {
+    background-color: #C1C0BF;
+}
+
+/* Scrollbar styling inside select if needed (for long options) */
+.styled-select::-webkit-scrollbar {
+    width: 8px;
+}
+
+.styled-select::-webkit-scrollbar-thumb {
+    background-color: #C1C1C1;
+    border-radius: 10px;
+}
+
+.styled-select::-webkit-scrollbar-thumb:hover {
+    background-color: #afafaf;
+}
+
+#declineDonation {
+    background-color: #929292;
+
+}
+
+.dataFields {
+    display: none;
+}

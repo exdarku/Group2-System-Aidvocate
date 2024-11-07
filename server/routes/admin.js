@@ -14,6 +14,10 @@ router.get('/addorganization', ensureAuthenticated, (req, res) => {
     res.sendFile(path.join(__dirname, '../../client/admin/organization/register/index.html'));
 });
 
+router.get('/approvedonation', ensureAuthenticated, (req, res) => {
+    res.sendFile(path.join(__dirname, '../../client/admin/dashboard/approveDonation/dashboard.html'));
+});
+
 // Protected admin route
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
     // Serve the dashboard page only if authenticated
