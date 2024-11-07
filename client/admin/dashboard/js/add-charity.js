@@ -1,8 +1,8 @@
 // Get the form element
-const form = document.getElementById('registrationForm');
+const charityForm = document.getElementById('charityRegistrationForm');
 
 // Handle form submission
-form.addEventListener('submit', function(event) {
+charityForm.addEventListener('submit', function(event) {
     event.preventDefault();  // Prevent form from submitting the traditional way
 
     // Gather form data individually
@@ -60,18 +60,15 @@ form.addEventListener('submit', function(event) {
 });
 
 
-function openModal() {
+function openCharityModal() {
     // Show the modal
-    document.getElementById("add-modal").style.display = "block";
+    document.getElementById("addCharity-modal").style.display = "block";
 
     // Disable background scroll
     document.body.style.overflow = "hidden";
 }
 
-function closeModal() {
+function closeCharityModal() {
     // Hide the modal
-    document.getElementById("add-modal").style.display = "none";
-
-    // Enable background scroll
-    document.body.style.overflow = "auto";
+    document.getElementById("addCharity-modal").style.display = "none";
 }
