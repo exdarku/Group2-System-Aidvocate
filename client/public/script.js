@@ -1,22 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-    const eventsContainer = document.querySelector('.charity');
+    console.log("DOM fully loaded and parsed");
+    const eventsContainer = document.querySelector('.dynamicContents');
 
     // Function to create a card
     function createCard(charityName, charityDescription, organizationID) {
         const card = document.createElement('div');
         card.classList.add('card');
     
-        // Set the background image for the card directly here
-        card.style.backgroundImage = "url('../api/image/" + organizationID + "')";
-        card.style.filter = "none";
-
+        // Create and set the background div with contrast filter applied in CSS
         const background = document.createElement('div');
         background.classList.add('background');
         background.style.backgroundImage = "url('../api/image/" + organizationID + "')";
         card.appendChild(background);
 
-    
         const button = document.createElement('button');
         const img = document.createElement('img');
         img.src = '../images/handIcon.png';
@@ -46,14 +42,19 @@ document.addEventListener("DOMContentLoaded", () => {
     
         return card;
     }
-    
 
-    // Getting the data from backend
+    // Fetch and append data
     fetch('/api/getorganizations')
     .then(response => response.json())
     .then(data => {
-        data.forEach(charity => {
-            eventsContainer.appendChild(createCard(charity.organizationName, charity.organizationDescription.slice(0, 80) + "...", charity.organizationID));
+        // Get the last 3 organizations
+        const lastThree = data.slice(-3);
+
+        // Loop through the last 3 items and append them to the container
+        lastThree.forEach((charity) => {
+            eventsContainer.appendChild(
+                createCard(charity.organizationName, charity.organizationDescription.slice(0, 80) + "...", charity.organizationID)
+            );
         });
     })
     .catch(error => {
@@ -61,4 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-
+document.querySelector('.seeMoreButton').addEventListener('click', () => {
+    window.location.href = '/charities';
+});
