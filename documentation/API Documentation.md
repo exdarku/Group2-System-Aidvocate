@@ -13,6 +13,8 @@
    - [Get Donation Details of an Organization](#8-get-donation-details-of-an-organization)
    - [Get Event Image](#9-get-event-image)
    - [Get Organization QR Code](#10-get-organization-qr-code)
+   - [Get a specific Donation Data](#11-get-a-donation-data)
+   - [Get all donations](#12-get-all-donations)
 3. [Authentication Endpoints](#authentication-endpoints)
    - [User Authentication](#1-user-authentication)
    - [User Login](#2-user-login)
@@ -152,16 +154,26 @@
 ---
 
 ### 9. **Get Event Image**
-- **Endpoint**: `/eventimage/:organizationId`
+- **Endpoint**: `/api/eventimage/:organizationId`
 - **Method**: `GET`
 - **Description**: Retrieves the image for an organization's event.
 
 ---
 
 ### 10. **Get Organization QR Code**
-- **Endpoint**: `/organizationqr/:organizationId`
+- **Endpoint**: `/api/organizationqr/:organizationId`
 - **Method**: `GET`
 - **Description**: Retrieves the Gcash/QrPH QR code for an organization.
+
+### 11. **Get a donation data**
+- **Endpoint**: `/api/get/donation/:donationID`
+- **Method**: `GET`
+- **Description**: Retrieves a specific donation data.
+
+### 12. **Get ALL donations**
+- **Endpoint**: `/api/get/alldonations/`
+- **Method**: `GET`
+- **Description**: Retrieves all donations in the database.
 
 ---
 
