@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <h4>${new Date(event.date).toLocaleString('default', { month: 'short' })}</h4>
                             </div>
                         </div>
-                        <p class="description">${event.descriptionOfEvent}</p>
+                        <p class="description">${event.descriptionOfEvent.slice(0,80)+"..."}</p>
                         <div class="infos-date infos">
                             <img src="images/schedule.png" alt="Clock">
                             <div class="venue-details">
