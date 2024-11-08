@@ -18,6 +18,8 @@
    - [Get all events](#13-get-all-events)
    - [Get a specific event](#14-get-an-event-data)
    - [Get verified donator count](#15-get-verified-donator-count)
+   - [Get Feature Image of the Organization](#16-get-organization-featured-image)
+   - [Get Logo Image of the Organization](#17-get-organization-logo-image)
 3. [Authentication Endpoints](#authentication-endpoints)
    - [User Authentication](#1-user-authentication)
    - [User Login](#2-user-login)
@@ -195,6 +197,18 @@
 - **Endpoint**: `/api/get/donatorcount/:organizationID`
 - **Method**: `GET`
 - **Description**: Retrieves all donator count that has been verified.
+
+
+### 16. **Get Organization Featured Image**
+- **Endpoint**: `/api/image/:organizationId`
+- **Method**: `GET`
+- **Description**: Retrieves the featured image of an organization.
+
+
+### 17. **Get Organization Logo Image**
+- **Endpoint**: `/api/logo/:organizationId`
+- **Method**: `GET`
+- **Description**: Retrieves the logo of an organization.
 
 
 ---
