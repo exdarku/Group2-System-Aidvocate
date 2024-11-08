@@ -330,3 +330,109 @@ nav .links a {
 .add-modal .content form button:hover {
     background-color: #fbb13c;
 }
+
+#organizationQR {
+    width: 50%;
+}
+
+
+/* Thank you modal styles */
+.thank-you-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's on top of other elements */
+}
+
+.thank-you-content {
+    background-color: #fff5e6; /* Soft, cheerful background */
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    animation: bounceIn 1s ease-out; /* Bouncing animation */
+}
+
+.thank-you-content h1 {
+    color: #ff7f50; /* Warm, friendly color for the title */
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Playful font for added happiness */
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.thank-you-content p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.thank-you-content button {
+    padding: 10px 20px;
+    background-color: #ff7f50; /* Matching button color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+.thank-you-content button:hover {
+    background-color: #ff6347; /* Darker shade for hover effect */
+}
+
+/* Bouncing animation */
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(-50px);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1) translateY(20px);
+    }
+    100% {
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Confetti particles animation */
+.confetti {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999; /* Make sure it's above content */
+}
+
+.confetti .particle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ff7f50;
+    animation: confettiFall 3s ease-in-out infinite;
+}
+
+@keyframes confettiFall {
+    0% {
+        opacity: 1;
+        transform: translateY(-100vh) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(50vh) rotate(360deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(720deg);
+    }
+}
+

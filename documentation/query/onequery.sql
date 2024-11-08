@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS donationTable (
     DonatorName VARCHAR(255),
     DonationAmount DECIMAL(10, 2) NOT NULL,
     Verified BOOLEAN DEFAULT FALSE,
-    DonationProof BLOB,
+    DonationProof LONGBLOB,
     FOREIGN KEY (OrganizationID) REFERENCES organizationData(organizationID)
 );
 

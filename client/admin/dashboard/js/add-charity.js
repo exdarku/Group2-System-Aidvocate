@@ -82,11 +82,12 @@ charityForm.addEventListener('submit', function(event) {
                 } else {
                     alert('Error: ' + res.message);
                 }
+            })
+            .catch(error => {
+                alert('Error during submission:', error);
             });
 
-            
             alert('Organization registered successfully!');
-
         } else {
             alert('Error: ' + data.message);
         }

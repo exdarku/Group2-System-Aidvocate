@@ -1,6 +1,7 @@
 // Extract the organization ID from the URL
 const urlParams = new URLSearchParams(window.location.search);
 const eventID = urlParams.get('eventID');
+let organizationId = null;
 
 if (eventID) {
     fetch(`/api/get/event/${eventID}`)
@@ -48,6 +49,8 @@ if (eventID) {
                     document.getElementById('charityPhoneNumber').textContent = organization.organizationPhoneNumber;
                     document.getElementById('charityContactNumber').textContent = organization.representativeContactNumber;
                     document.getElementById('charityEmail').textContent = organization.organizationEmail;
+                    document.getElementById('organizationQR').src = `/api/organizationqr/${organization.organizationID}`;
+                    organizationId = organization.organizationID;
                 });
             }
         })
@@ -80,3 +83,98 @@ function fetchOrganization(organizationID) {
         console.error('Error fetching organization data:', error);
     });
 }
+
+
+
+
+
+
+
+// Get the form element
+const donationForm = document.getElementById('donationForm');
+const thankYouModal = document.getElementById('thankYou-modal');
+
+donationForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const amount = document.getElementById('amount');
+    const amountValue = parseFloat(amount.value);
+
+    // Validate the amount value
+    if (isNaN(amountValue) || amountValue <= 0) {
+        amount.style.border = 'solid red 2px';
+        return;
+    } else {
+        amount.style.border = 'none';
+    }
+
+    const donationData = new FormData();
+    donationData.append('OrganizationID', organizationId);
+    donationData.append('DonatorName', document.getElementById('donatorName').value);
+    donationData.append('DonationAmount', amountValue);
+    donationData.append('DonationProof', document.getElementById('proofOfPayment').files[0]);
+
+    fetch('/api/donate', {
+        method: 'POST',
+        body: donationData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message === 'Donation added successfully') {
+            showThankYouGreet();
+            closeDonationForm();
+        } else {
+            alert('Error: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error during submission:', error);
+        alert('An error occurred while processing the donation');
+    });
+});
+
+
+
+function showDonationForm() {
+
+    // Show the modal
+    document.getElementById("addDonation-modal").style.display = "block";
+
+    // Disable background scroll
+    document.body.style.overflow = "hidden";
+}
+
+function closeDonationForm() {
+    // Hide the modal
+    document.getElementById("addDonation-modal").style.display = "none";
+
+    // Enable background scroll
+    document.body.style.overflow = "auto";
+}
+
+
+// Add the confetti container and show the modal
+function showThankYouGreet() {
+    const modal = document.querySelector('.thank-you-modal');
+    const confettiContainer = document.createElement('div');
+    confettiContainer.classList.add('confetti');
+
+    // Create random confetti particles
+    for (let i = 0; i < 100; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.left = `${Math.random() * 100}vw`; // Random horizontal position
+        particle.style.animationDelay = `${Math.random() * 2}s`; // Random animation delay
+        confettiContainer.appendChild(particle);
+    }
+
+    modal.appendChild(confettiContainer);
+    modal.style.display = 'flex';
+
+    // Remove confetti and close the modal after 4 seconds
+    setTimeout(() => {
+        confettiContainer.remove(); // Removes the confetti container
+        modal.style.display = 'none'; // Hide the modal
+    }, 4000); // 4000 milliseconds (4 seconds)
+}
+
