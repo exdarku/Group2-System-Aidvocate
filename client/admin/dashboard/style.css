@@ -730,3 +730,11 @@ button:hover {
     cursor: pointer;
 }
 
+
+
+
+.broken-line {
+    border-top: 2px dashed #333; /* Creates a dashed line */
+    width: 100%;               /* Full width */
+    margin: 20px 0;            /* Adds spacing around the line */
+}

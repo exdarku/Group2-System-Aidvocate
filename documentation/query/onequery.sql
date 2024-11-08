@@ -1,5 +1,5 @@
 -- One Query SQL
--- Updated Nov 7, 2024 | 4:47AM
+-- Updated Nov 8, 2024 | 4:47PM
 
 -- Drop tables manually (adjust based on your needs)
 DROP TABLE IF EXISTS organizationEvents, organizationDonationDescription, donationTable, organizationData;
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS organizationData (
     organizationName VARCHAR(255) NOT NULL,
     organizationDescription TEXT,
     organizationPhoneNumber VARCHAR(20),
-    organzationEmail VARCHAR(255),
+    organizationEmail VARCHAR(255),
     organizationAddress VARCHAR(255),
     organizationAbbreviation VARCHAR(50),
     representativeName VARCHAR(255),

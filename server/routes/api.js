@@ -281,10 +281,10 @@ router.post('/addorganization', ensureAuthenticated, upload.fields([
         organizationName,
         organizationDescription,
         organizationPhoneNumber,
+        organizationEmail,
         organizationAddress,
         organizationAbbreviation,
         representativeName,
-        organizationEmail,
         representativeContactNumber
     } = req.body;
     // Retrieve the file buffers from the request
@@ -297,14 +297,14 @@ router.post('/addorganization', ensureAuthenticated, upload.fields([
             organizationName, 
             organizationDescription, 
             organizationPhoneNumber, 
+            organizationEmail,
             organizationAddress, 
             organizationAbbreviation, 
             representativeName,
-            organizationEmail,
             representativeContactNumber,
             organizationProfilePicture,
             organizationFeaturePicture
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
     `;
 
     // Values for the query (including BLOBs for the images)
@@ -312,10 +312,10 @@ router.post('/addorganization', ensureAuthenticated, upload.fields([
         organizationName,
         organizationDescription,
         organizationPhoneNumber,
+        organizationEmail,
         organizationAddress,
         organizationAbbreviation,
         representativeName,
-        organizationEmail,
         representativeContactNumber,
         organizationLogo,          // BLOB for the logo
         organizationFeaturedPicture // BLOB for the featured picture

@@ -67,6 +67,7 @@ eventForm.addEventListener('submit', function(event) {
     formData.append('location', location);
     formData.append('date', date);
     formData.append('time', time);
+    formData.append('status', 0);
 
     // Append file if it exists
     if (eventImage) {
