@@ -81,7 +81,6 @@ nav .links a {
     font-size: large;
     margin: 20px 0px;
     text-indent: 50px;
-    text-align: justify;
 }
 
 
@@ -89,9 +88,9 @@ nav .links a {
 .mapouter {
     position: relative;
     text-align: right;
-    width: 70%;
+    width: 65%;
     height: 500px;
-    margin: 2%;
+    margin: 5%;
 }
 .gmap_canvas {
     overflow: hidden;
