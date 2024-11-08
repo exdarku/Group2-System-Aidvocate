@@ -123,6 +123,9 @@ fetch('http://localhost:3000/api/getorganizations', {
 })
 .then(response => response.json())  // Parse the response as JSON
 .then(organizations => {
+
+    organizations.sort((a, b) => new Date(b.organizationRegisterDate) - new Date(a.organizationRegisterDate));
+
     organizations.forEach((org) => {
         // Append each created card to the panel container
         charityContainer.appendChild(createCard(org));
