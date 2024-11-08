@@ -12,6 +12,7 @@ charityForm.addEventListener('submit', function(event) {
     const organizationAddress = document.getElementById('organizationAddress').value;
     const organizationAbbreviation = document.getElementById('organizationAbbreviation').value;
     const representativeName = document.getElementById('representativeName').value;
+    const organizationEmail = document.getElementById('organizationEmail').value;
     const representativeContactNumber = document.getElementById('representativeContactNumber').value;
     const totalDonationCollected = document.getElementById('totalDonationCollected').value;
     const organizationProfilePicture = document.getElementById('organizationProfilePicture').files[0]; // Get the file
@@ -26,6 +27,7 @@ charityForm.addEventListener('submit', function(event) {
     formData.append('organizationAddress', organizationAddress);
     formData.append('organizationAbbreviation', organizationAbbreviation);
     formData.append('representativeName', representativeName);
+    formData.append('organizationEmail', organizationEmail);
     formData.append('representativeContactNumber', representativeContactNumber);
     formData.append('totalDonationCollected', totalDonationCollected);
     formData.append('status', 0);

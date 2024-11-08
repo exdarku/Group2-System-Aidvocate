@@ -284,6 +284,7 @@ router.post('/addorganization', ensureAuthenticated, upload.fields([
         organizationAddress,
         organizationAbbreviation,
         representativeName,
+        organizationEmail,
         representativeContactNumber
     } = req.body;
     // Retrieve the file buffers from the request
@@ -298,7 +299,8 @@ router.post('/addorganization', ensureAuthenticated, upload.fields([
             organizationPhoneNumber, 
             organizationAddress, 
             organizationAbbreviation, 
-            representativeName, 
+            representativeName,
+            organizationEmail,
             representativeContactNumber,
             organizationProfilePicture,
             organizationFeaturePicture
@@ -313,6 +315,7 @@ router.post('/addorganization', ensureAuthenticated, upload.fields([
         organizationAddress,
         organizationAbbreviation,
         representativeName,
+        organizationEmail,
         representativeContactNumber,
         organizationLogo,          // BLOB for the logo
         organizationFeaturedPicture // BLOB for the featured picture

@@ -26,8 +26,8 @@ if (eventID) {
                 });
 
                 document.getElementById('eventLocation').textContent = data[0].location;
+
                 document.getElementById('eventDate').textContent = `${new Date(data[0].date).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})}`;
-                
                 document.getElementById('eventTime').textContent = `${new Date('1970-01-01T' + data[0].time).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit',  hour12: true })}`;
 
                 // Dynamically set Google Maps iframe location based on event location
@@ -43,10 +43,11 @@ if (eventID) {
                 `;
 
                 // Fetch the organization data
-                fetchOrganization(1).then(organization => {
+                fetchOrganization(data[0].organizationID).then(organization => {
                     document.getElementById('eventOrganization').textContent = organization.organizationName;
                     document.getElementById('charityPhoneNumber').textContent = organization.organizationPhoneNumber;
                     document.getElementById('charityContactNumber').textContent = organization.representativeContactNumber;
+                    document.getElementById('charityEmail').textContent = organization.organizationEmail;
                 });
             }
         })
@@ -73,7 +74,7 @@ function fetchOrganization(organizationID) {
         return response.json();
     })
     .then(organization => {
-        return organization[0];  // Adjust based on the structure of the response
+        return organization[0];
     })
     .catch(error => {
         console.error('Error fetching organization data:', error);

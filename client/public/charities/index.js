@@ -8,6 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function createCard(charityName, charityDescription, organizationID) {
         const card = document.createElement('div');
         card.classList.add('card');
+
+        card.onclick = function() {
+            showProfile(organizationID);
+        };
     
         // Set the background image for the card directly here
         card.style.backgroundImage = `url('../api/image/${organizationID}')`;
@@ -69,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(data => {
             allCharities = data; // Save all charities data
+            allCharities.sort((a, b) => new Date(b.organizationRegisterDate) - new Date(a.organizationRegisterDate));
             displayCharities(allCharities); // Display all charities initially
         })
         .catch(error => {
@@ -89,3 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
         displayCharities(filteredCharities);
     });
 });
+
+function showProfile(organizationID) {
+    window.location.href = `/profile?organizationID=${organizationID}`;
+}
