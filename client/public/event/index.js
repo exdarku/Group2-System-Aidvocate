@@ -152,29 +152,34 @@ function closeDonationForm() {
     document.body.style.overflow = "auto";
 }
 
+function createConfettiParticle() {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    particle.style.left = `${Math.random() * 100}vw`;
+    particle.style.animationDelay = `${Math.random() * 2}s`;
+    return particle;
+}
 
-// Add the confetti container and show the modal
+function generateConfetti(count) {
+    return Array.from({ length: count }, createConfettiParticle);
+}
+
+// Show modal with confetti and set a timer to close
 function showThankYouGreet() {
     const modal = document.querySelector('.thank-you-modal');
     const confettiContainer = document.createElement('div');
     confettiContainer.classList.add('confetti');
 
-    // Create random confetti particles
-    for (let i = 0; i < 100; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        particle.style.left = `${Math.random() * 100}vw`; // Random horizontal position
-        particle.style.animationDelay = `${Math.random() * 2}s`; // Random animation delay
-        confettiContainer.appendChild(particle);
-    }
+    // Declaratively append generated confetti particles
+    generateConfetti(100).forEach(particle => confettiContainer.appendChild(particle));
 
     modal.appendChild(confettiContainer);
     modal.style.display = 'flex';
 
-    // Remove confetti and close the modal after 4 seconds
+    // Close modal after 4 seconds
     setTimeout(() => {
-        confettiContainer.remove(); // Removes the confetti container
-        modal.style.display = 'none'; // Hide the modal
-    }, 4000); // 4000 milliseconds (4 seconds)
+        confettiContainer.remove();
+        modal.style.display = 'none';
+    }, 4000);
 }
 
