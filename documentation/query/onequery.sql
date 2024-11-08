@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS organizationData (
     organizationName VARCHAR(255) NOT NULL,
     organizationDescription TEXT,
     organizationPhoneNumber VARCHAR(20),
+    organzationEmail VARCHAR(255),
     organizationAddress VARCHAR(255),
     organizationAbbreviation VARCHAR(50),
     representativeName VARCHAR(255),
