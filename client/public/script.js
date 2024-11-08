@@ -6,7 +6,11 @@ document.addEventListener("DOMContentLoaded", () => {
     function createCard(charityName, charityDescription, organizationID) {
         const card = document.createElement('div');
         card.classList.add('card');
-    
+
+        card.onclick = function() {
+            showProfile(organizationID);
+        };
+            
         // Create and set the background div with contrast filter applied in CSS
         const background = document.createElement('div');
         background.classList.add('background');
@@ -131,5 +135,7 @@ document.querySelector('.seeMoreButton').addEventListener('click', () => {
 
 function showEvent(eventID) {
     window.location.href = `/event?eventID=${eventID}`;
-    console.log(eventID)
+}
+function showProfile(organizationID) {
+    window.location.href = `/profile?organizationID=${organizationID}`;
 }

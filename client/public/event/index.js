@@ -1,9 +1,9 @@
 // Extract the organization ID from the URL
 const urlParams = new URLSearchParams(window.location.search);
-const organizationID = urlParams.get('eventID');
+const eventID = urlParams.get('eventID');
 
-if (organizationID) {
-    fetch(`/api/get/event/${organizationID}`)
+if (eventID) {
+    fetch(`/api/get/event/${eventID}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);

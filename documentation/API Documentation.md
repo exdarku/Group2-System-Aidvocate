@@ -99,7 +99,7 @@
 
 ### 5. **Get a Single Organization**
 - **Endpoint**: `/api/get/organization`
-- **Method**: `GET`
+- **Method**: `POST`
 - **Description**: Retrieves details of a single organization.
 
   **Request Body**:
