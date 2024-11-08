@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="details">
                         <div class="header">
                             <div class="title">
-                                <h5 class="status">UPCOMING EVENT</h5>
+                                <h5 class="status">${event.status}</h5>
                                 <h3>${event.nameOfEvent}</h3>
                             </div>
                             <div class="date">
