@@ -48,7 +48,7 @@ class EventCard {
 
         const status = document.createElement('h5');
         status.classList.add('status');
-        status.textContent = this.event.status;
+        status.textContent = "Upcoming Event";
         const eventTitle = document.createElement('h2');
         eventTitle.textContent = this.event.nameOfEvent;
         
@@ -148,6 +148,12 @@ class EventCard {
         const button = document.createElement('button');
         button.classList.add('seeMoreButton');
         button.textContent = 'See more';
+
+        // Adding onclick event listener
+        button.onclick = () => {
+            window.location.href = `/event?eventID=${this.event.eventID}`;
+        };
+
         return button;
     }
 
@@ -170,7 +176,7 @@ fetch('http://localhost:3000/api/get/allevents/', {
     eventsContainer.innerHTML = ''; // Clear existing events
 
     // Filter for only events with status "UPCOMING EVENTS"
-    const upcomingEvents = events.filter(event => event.status === "UPCOMING EVENTS");
+    const upcomingEvents = events.filter(event => event.status === 0);
 
     upcomingEvents.forEach(eventData => {
         const eventCard = new EventCard(eventData);

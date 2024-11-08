@@ -339,7 +339,8 @@ router.post('/addevent', ensureAuthenticated, upload.single('imageOfEvent_poster
         descriptionOfEvent,
         location,
         date,
-        time
+        time,
+        status
     } = req.body;
 
     // Get the uploaded image (if present)
@@ -354,8 +355,9 @@ router.post('/addevent', ensureAuthenticated, upload.single('imageOfEvent_poster
             imageOfEvent_posters,
             location,
             date,
-            time
-        ) VALUES (?, ?, ?, ?, ?, ?, ?)
+            time,
+            status
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
     // Values for the SQL query
@@ -366,7 +368,8 @@ router.post('/addevent', ensureAuthenticated, upload.single('imageOfEvent_poster
         eventImage,       // Store the uploaded image as a BLOB
         location,
         date,
-        time
+        time,
+        status
     ];
 
     // Execute the SQL query

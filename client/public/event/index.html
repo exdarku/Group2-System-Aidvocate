@@ -40,14 +40,21 @@
 
         <div class="Left-Side">
             <img src="" alt="Event Poster" id="eventPoster">
-            <h4>ORGANIZED BY</h4>
+            <div class="header">
+                <h4>ORGANIZED BY</h4>
+
+                <div class="header-date">
+                    <h4 id="eventDate">Date</h4>
+                    <h4 id="eventTime">Time</h4>
+                </div>
+            </div>
             <h1 id="eventOrganization">ORGANIZATION NAME</h1>
         </div>
 
 
         <div class="Right-Side">
             <div class="section">
-                <button>Donate Here</button>
+                <button onclick="showDonationForm()">Donate Here</button>
                 <h2>DETAILS</h2>  
                 <h4 class="details-header">Contact Details</h4>
 
@@ -77,6 +84,41 @@
         </div>
         
     </div>
+
+    <!-- MODAL FOR DONATION FORM -->
+    <div id="addDonation-modal" class="add-modal">
+        <div class="content">
+            <span class="close" onclick="closeDonationForm()">&times;</span>
+            <h2>Donation Form</h2>
+
+            <form id="eventRegistrationForm" enctype="multipart/form-data">
+                <label for="OrganizationName">Charity Name</label>
+                <input type="text" id="OrganizationName" name="OrganizationName" placeholder="Enter charity name" required>
+       
+                <label for="eventName">Event Name</label>
+                <input type="text" id="eventName" name="eventName" placeholder="Enter event name" required>
+
+                <label for="eventDescription">Description</label>
+                <textarea id="eventDescription" name="eventDescription" rows="8" placeholder="Enter description" required></textarea>
+
+                <label for="eventLocation">Location</label>
+                <input type="text" id="eventLocation" name="eventLocation" placeholder="Enter event name" required>
+
+                <label for="eventDate">Date</label>
+                <input type="date" id="eventDate" name="eventDate" required>
+
+                <label for="eventTime">Time</label>
+                <input type="time" id="eventTime" name="eventTime" required>
+
+                <label for="eventImagePoster">Image Poster</label>
+                <input type="file" id="eventImagePoster" name="eventImagePoster" accept="image/*" required>
+
+
+                <button type="submit">Register Event</button>
+            </form>
+        </div>
+    </div>
+
     
 
     <footer>
@@ -103,5 +145,6 @@
     </footer>
 
     <script src="index.js"></script>
+    <script src="donation.js"></script>
 </body>
 </html>

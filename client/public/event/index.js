@@ -26,6 +26,9 @@ if (organizationID) {
                 });
 
                 document.getElementById('eventLocation').textContent = data[0].location;
+                document.getElementById('eventDate').textContent = `${new Date(data[0].date).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})}`;
+                
+                document.getElementById('eventTime').textContent = `${new Date('1970-01-01T' + data[0].time).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit',  hour12: true })}`;
 
                 // Dynamically set Google Maps iframe location based on event location
                 const location = encodeURIComponent(data[0].location); // Make the location URL-safe

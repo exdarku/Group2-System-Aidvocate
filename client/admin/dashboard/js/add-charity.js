@@ -28,6 +28,7 @@ charityForm.addEventListener('submit', function(event) {
     formData.append('representativeName', representativeName);
     formData.append('representativeContactNumber', representativeContactNumber);
     formData.append('totalDonationCollected', totalDonationCollected);
+    formData.append('status', 0);
 
     // Append files if they exist
     if (organizationProfilePicture) {

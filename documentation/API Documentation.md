@@ -125,7 +125,8 @@
       "descriptionOfEvent": "A night of fundraising for local children’s education programs.",
       "location": "Downtown Convention Center, Main Hall",
       "date": "2024-12-15",
-      "time": "19:00:00"
+      "time": "19:00:00",
+      "status": 0
   }
   ```
 

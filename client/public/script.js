@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Filter events for the current month and year
             const filteredEvents = data.filter(event => {
                 const eventDate = new Date(event.date);
-                return eventDate.getMonth() === currentMonth && eventDate.getFullYear() === currentYear;
+                return eventDate.getMonth() === currentMonth && eventDate.getFullYear() === currentYear && event.status === 0;
             });
 
             filteredEvents.forEach(event => {
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="details">
                         <div class="header">
                             <div class="title">
-                                <h5 class="status">${event.status}</h5>
+                                <h5 class="status">Upcoming Event</h5>
                                 <h3>${event.nameOfEvent}</h3>
                             </div>
                             <div class="date">
@@ -101,7 +101,11 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div class="infos-date infos">
                             <img src="images/schedule.png" alt="Clock">
                             <div class="venue-details">
-                                <p>${new Date(event.date).toLocaleDateString('en-US', { weekday: 'long' })}, ${event.time}</p>
+                                <p>${new Date('1970-01-01T' + event.time).toLocaleTimeString('en-US', { 
+                                    hour: 'numeric', 
+                                    minute: '2-digit', 
+                                    hour12: true 
+                                  })}</p>
                             </div>
                         </div>
                         <div class="infos-place infos">

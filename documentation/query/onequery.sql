@@ -54,6 +54,7 @@ CREATE TABLE IF NOT EXISTS organizationEvents (
     location VARCHAR(255),
     date DATE,
     time TIME,
+    status INT,
     FOREIGN KEY (organizationID) REFERENCES organizationData(organizationID) ON DELETE CASCADE
 );
 

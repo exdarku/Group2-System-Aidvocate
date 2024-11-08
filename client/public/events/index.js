@@ -48,7 +48,7 @@ class EventCard {
 
         const status = document.createElement('h5');
         status.classList.add('status');
-        status.textContent = this.event.status;
+        status.textContent = "Upcoming Event";
         const eventTitle = document.createElement('h3');
         eventTitle.textContent = this.event.nameOfEvent;
         
@@ -144,7 +144,7 @@ class EventCard {
         button.classList.add('seeMoreButton');
         button.textContent = 'See more';
 
-            // Adding onclick event listener
+        // Adding onclick event listener
         button.onclick = () => {
             window.location.href = `/event?eventID=${this.event.eventID}`;
         };
@@ -174,7 +174,7 @@ fetch('http://localhost:3000/api/get/allevents/', {
 .then(response => response.json())
 .then(events => {
     // Filter events to show only "UPCOMING EVENTS"
-    allEvents = events.filter(event => event.status === "UPCOMING EVENTS"); // Save only upcoming events
+    allEvents = events.filter(event => event.status === 0); // Save only upcoming events
     displayEvents(allEvents); // Display filtered upcoming events initially
 })
 .catch(error => {
@@ -208,7 +208,7 @@ searchInput.addEventListener('input', function () {
 
     // Filter events by title, description, or location and also check for "UPCOMING EVENTS"
     const filteredEvents = allEvents.filter(event => 
-        event.status === "UPCOMING EVENTS" && (
+        event.status === 0 && (
             event.nameOfEvent.toLowerCase().includes(searchTerm) ||
             event.descriptionOfEvent.toLowerCase().includes(searchTerm) ||
             event.location.toLowerCase().includes(searchTerm)
