@@ -102,7 +102,7 @@ router.get('/get/donatorcount/:organizationID', ensureAuthenticated, (req, res) 
         if (err) throw err;
         res.status(200).json(results);
     });
-});
+}); 
 
 
 
