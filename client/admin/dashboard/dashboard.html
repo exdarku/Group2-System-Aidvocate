@@ -22,7 +22,7 @@
 
     <nav>
         <!-- Aidvocate Logo -->
-        <a href=""><img src="images/logo.png" alt="LOGO"></a>
+        <a href="/"><img src="images/logo.png" alt="LOGO"></a>
 
         <!-- Navigation Links -->
         <div class="links">
@@ -38,9 +38,9 @@
             <div class="leftBar-items">
                 <!-- LINK OR NAVIGATIONS -->
                 <a href="" class="selected"><img src="images/dashboardIcon.png" alt="">Dashboard</a>
-                <a href=""><img src="images/calendarIcon.png" alt="">Calendar</a>
+                <!-- <a href=""><img src="images/calendarIcon.png" alt="">Calendar</a> -->
                 <a href="/admin/approvedonation" id="openApprovalModalButton"><img src="images/emailIcon.png" alt="">Approve Donations</a>
-                <a href=""><img src="images/settingIcon.png" alt="">Settings</a>
+                <!-- <a href=""><img src="images/settingIcon.png" alt="">Settings</a> -->
     
                 <!-- LOGOUT BUTTON -->
                 <a href="/auth/logout" class="selected logout" ><img src="images/logout.png" alt="">Logout</a>
@@ -97,7 +97,7 @@
 
             <div class="events-panel">
                 <div class="header">
-                    <h1>UPCOMING EVENTS | NOVEMBER</h1>
+                    <h1>UPCOMING EVENTS</h1>
                     <button onclick="openEventModal()" id="createEvent">Create +</button>
                 </div>
                 <div class="events">
@@ -148,8 +148,8 @@
                     </div>
 
                     <div class="input">
-                        <label for="organizationPhoneNumber">Email</label>
-                        <input type="email" id="organizationPhoneNumber" name="organizationPhoneNumber" placeholder="Enter email" required>
+                        <label for="organizationEmail">Email</label>
+                        <input type="email" id="organizationEmail" name="organizationEmail" placeholder="Enter email" required>
                     </div>
 
                     <div class="input">
@@ -163,7 +163,7 @@
                 <textarea id="organizationDescription" name="organizationDescription" rows="4" placeholder="Enter description" required></textarea>
 
                 <label for="totalDonationCollected">Total Donation Collected</label>
-                <input type="number" id="totalDonationCollected" name="totalDonationCollected" step="0.01" value="0.00" placeholder="Enter donation" required>
+                <input type="number" id="totalDonationCollected" name="totalDonationCollected" step="0.01" value="0.00" placeholder="Enter donation" readonly>
 
                 <div class="divide-input">
                     <div class="input">
@@ -176,6 +176,34 @@
                         <input type="file" id="organizationFeaturedPicture" name="organizationFeaturedPicture" accept="image/*" required>
                     </div>
                 </div>
+
+                <!-- DONATION DETAILS PART -->
+                <div class="broken-line"></div>
+
+                <h2>Donation Details</h2>
+
+                <label for="organizationBankAccountHolder">Bank Account Holder</label>
+                <input type="text" id="organizationBankAccountHolder" name="organizationBankAccountHolder" placeholder="Enter account holder" required>
+
+                <label for="organizationGcashQR">Gcash QR</label>
+                <input type="file" id="organizationGcashQR" name="organizationGcashQR" accept="image/*" required>
+
+                <label for="organizationBankAccountName">Bank Account Name</label>
+                <input type="text" id="organizationBankAccountName" name="organizationBankAccountName" placeholder="Enter bank account name (Optional)">
+
+                <div class="divide-input">
+                    <div class="input">
+                        <label for="organizationBankAccountBank">Bank Account Bank</label>
+                        <input type="text" id="organizationBankAccountBank" name="organizationBankAccountBank" placeholder="Enter bank account bank (Optional)">
+                    </div>
+
+                    <div class="input">
+                        <label for="organizationBankAccountNumber">Bank Account Number</label>
+                        <input type="text" id="organizationBankAccountNumber" name="organizationBankAccountNumber" placeholder="Enter bank account number (Optional)">
+                    </div>
+                </div>
+
+
 
 
                 <button type="submit">Register Organization</button>
@@ -248,7 +276,6 @@
                         <input type="file" id="organizationFeaturedPicture" name="organizationFeaturedPicture" accept="image/*" required>
                     </div>
                 </div>
-
 
                 <button type="submit">Register Organization</button>
             </form>

@@ -47,6 +47,8 @@ class EventCard {
         title.classList.add('title');
 
         const status = document.createElement('h5');
+        status.classList.add('status');
+        status.textContent = "Upcoming Event";
         const eventTitle = document.createElement('h3');
         eventTitle.textContent = this.event.nameOfEvent;
         
@@ -141,6 +143,12 @@ class EventCard {
         const button = document.createElement('button');
         button.classList.add('seeMoreButton');
         button.textContent = 'See more';
+
+        // Adding onclick event listener
+        button.onclick = () => {
+            window.location.href = `/event?eventID=${this.event.eventID}`;
+        };
+
         return button;
     }
 
@@ -159,14 +167,15 @@ const searchInput = document.querySelector('.search-input');
 
 let allEvents = [];
 
-// Fetch events and display them
+// Fetch events and display only upcoming events
 fetch('http://localhost:3000/api/get/allevents/', {
     method: 'GET'
 })
 .then(response => response.json())
 .then(events => {
-    allEvents = events; // Save all events
-    displayEvents(events); // Display all events initially
+    // Filter events to show only "UPCOMING EVENTS"
+    allEvents = events.filter(event => event.status === 0); // Save only upcoming events
+    displayEvents(allEvents); // Display filtered upcoming events initially
 })
 .catch(error => {
     console.error('Error:', error);
@@ -193,16 +202,18 @@ function displayEvents(events) {
     }
 }
 
-// Search event based on event name
+// Search event based on event name and only display upcoming events
 searchInput.addEventListener('input', function () {
     const searchTerm = searchInput.value.toLowerCase();
 
-    // Filter events by title, description, or location
+    // Filter events by title, description, or location and also check for "UPCOMING EVENTS"
     const filteredEvents = allEvents.filter(event => 
-        event.nameOfEvent.toLowerCase().includes(searchTerm) ||
-        event.descriptionOfEvent.toLowerCase().includes(searchTerm) ||
-        event.location.toLowerCase().includes(searchTerm)
+        event.status === 0 && (
+            event.nameOfEvent.toLowerCase().includes(searchTerm) ||
+            event.descriptionOfEvent.toLowerCase().includes(searchTerm) ||
+            event.location.toLowerCase().includes(searchTerm)
+        )
     );
 
-    displayEvents(filteredEvents); // Display filtered events
+    displayEvents(filteredEvents); // Display filtered upcoming events
 });

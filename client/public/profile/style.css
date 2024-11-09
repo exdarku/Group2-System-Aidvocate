@@ -81,6 +81,24 @@ nav .links a {
     font-size: large;
     margin: 20px 0px;
     text-indent: 50px;
-    text-align: justify;
 }
 
+
+
+.mapouter {
+    position: relative;
+    text-align: right;
+    width: 65%;
+    height: 500px;
+    margin: 5%;
+}
+.gmap_canvas {
+    overflow: hidden;
+    background: none !important;
+    width: 100%;
+    height: 500px;
+}
+.gmap_iframe {
+    width: 100% !important;
+    height: 500px !important;
+}

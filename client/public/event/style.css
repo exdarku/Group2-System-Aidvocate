@@ -56,13 +56,33 @@ nav .links a {
     width: 70%;
     margin: 1%;
 }
+.Left-Side .header{
+    display: flex;
+    width: 100%;
+}
+.Left-Side .header .header-date{
+    margin-left: auto;
+    margin-right: 50px;
+    display: flex;
+}
+.Left-Side .header .header-date > *{
+    margin-right: 20px;
+    color: #615858;
+}
+.Left-Side h4{
+    color: #DDA840;
+}
 
 .Left-Side img {
     width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 20px;
 }
 
 .Left-Side p {
     margin-top: 20px;
+    text-indent: 50px;
 }
 
 .Right-Side {
@@ -72,15 +92,347 @@ nav .links a {
 }
 
 .Right-Side .section {
-    background-color: #FBFBF5;
+    background-color: #FCD384;
     width: 100%;
     border-radius: 10px;
     padding: 20px;
-    height: 400px;
+    height: auto;
     margin-bottom: 40px;
+    position: relative;
+}
+.Right-Side .section button {
+    background-color: #1C1D28;
+    border-radius: 20px;
+    padding: 5px 20px;
+    font-size: larger;
+    color: #FBFBF5;
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
 }
 
-.header .status {
-    color: #DDA840;
+.Right-Side .section .details-header{
+    color: #615858;
+}
+
+.Right-Side .section .details{
+    display: flex;
+    align-items: center;
+    font-size: medium;
+    margin: 10px 0;
+}
+
+.Right-Side .section .details img{
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+}
+.Right-Side .section .details p{
+    font-size: small;
+}
+
+.mapouter {
+    position: relative;
+    text-align: right;
+    width: 100%;
+    height: 200px;
+}
+.gmap_canvas {
+    overflow: hidden;
+    background: none !important;
+    width: 100%;
+    height: 200px;
+}
+.gmap_iframe {
+    width: 100% !important;
+    height: 200px !important;
+}
+
+
+
+
+/* DONATION FORM MODAL */
+
+/* ADD MODAL */
+/* Modal background styling */
+.add-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow-y: hidden;
+}
+
+/* Modal content box styling */
+.add-modal .content {
+    position: relative;
+    margin: 5% auto;
+    background-color: #EBEBEB;
+    padding: 20px;
+    width: 60%;
+    max-height: 80vh;
+    overflow-y: auto; /* Allow scrolling within modal if content overflows */
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Adds a shadow for a floating effect */
+    color: #535359;
+    text-align: center;
+}
+.add-modal .content::-webkit-scrollbar-thumb {
+    background-color: #C1C1C1;
+    border: 4px solid transparent;
+    border-radius: 10px;
+    background-clip: padding-box; 
+}
+.add-modal .content::-webkit-scrollbar-thumb:hover {
+    background-color: #afafaf;
+}
+.add-modal .content::-webkit-scrollbar {
+    width: 20px;
+}
+
+
+/* Close button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+.add-modal .content h2 {
+    font-size: 30px;
+}
+
+.add-modal .content form {
+    display: block;
+    margin: 20px 0px;
+    padding: 20px;
+    text-align: left;
+    justify-content: left;
+}
+
+.add-modal .content form label{
+    display: block;
+}
+
+.add-modal .content form input[type="text"], input[type="number"], input[type=email], select {
+    background-color: #DDDBD7;
+    color: #535359;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    padding: 20px;
+    font-size: large;
+    margin-bottom: 20px;
+}
+.add-modal .content form input::placeholder {
+    color: #C1C0BF;
+}
+
+.add-modal .content form .divide-input {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 40px;
+}
+.add-modal .content form .divide-input .input {
+    display: block;
+    width: 100%;
+}
+
+.add-modal .content form textarea {
+    background-color: #DDDBD7;
+    color: #535359;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    padding: 20px;
+    font-size: large;
+    margin-bottom: 20px;
+    
+    resize: none; /* Prevent resizing */
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 200px; /* Set a max height to trigger scrolling when text exceeds this height */
+}
+.add-modal .content form textarea::placeholder {
+    color: #C1C0BF;
+}
+
+.add-modal .content form input[type=file]::-webkit-file-upload-button {
+    background-color: #DDDBD7;
+    border: solid #d1ccc3 1px;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.add-modal .content form input[type=file]::-webkit-file-upload-button:hover {
+    background-color: #d1ccc3;
+}
+
+/* Style for the time input */
+.add-modal .content form input[type="time"] {
+    background-color: #DDDBD7;
+    border: solid #d1ccc3 1px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+/* Hover effect for the time input */
+.add-modal .content form input[type="time"]:hover {
+    background-color: #d1ccc3;
+}
+
+/* Style for the date input */
+.add-modal .content form input[type="date"] {
+    background-color: #DDDBD7;
+    border: solid #d1ccc3 1px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+/* Hover effect for the date input */
+.add-modal .content form input[type="date"]:hover {
+    background-color: #d1ccc3;
+}
+
+
+
+.add-modal .content form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #FCD384;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.add-modal .content form button:hover {
+    background-color: #fbb13c;
+}
+
+#organizationQR {
+    width: 50%;
+}
+
+
+/* Thank you modal styles */
+.thank-you-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's on top of other elements */
+}
+
+.thank-you-content {
+    background-color: #fff5e6; /* Soft, cheerful background */
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    animation: bounceIn 1s ease-out; /* Bouncing animation */
+}
+
+.thank-you-content h1 {
+    color: #ff7f50; /* Warm, friendly color for the title */
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Playful font for added happiness */
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.thank-you-content p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.thank-you-content button {
+    padding: 10px 20px;
+    background-color: #ff7f50; /* Matching button color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+.thank-you-content button:hover {
+    background-color: #ff6347; /* Darker shade for hover effect */
+}
+
+/* Bouncing animation */
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(-50px);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1) translateY(20px);
+    }
+    100% {
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Confetti particles animation */
+.confetti {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999; /* Make sure it's above content */
+}
+
+.confetti .particle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ff7f50;
+    animation: confettiFall 3s ease-in-out infinite;
+}
+
+@keyframes confettiFall {
+    0% {
+        opacity: 1;
+        transform: translateY(-100vh) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(50vh) rotate(360deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(720deg);
+    }
 }
 

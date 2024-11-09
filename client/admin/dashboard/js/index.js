@@ -35,7 +35,16 @@ function createCard(organization) {
     charityName.textContent = organization.organizationName;
     const charityDonations = document.createElement('p');
     charityDonations.id = 'charity-donations';
-    charityDonations.textContent = `${organization.totalDonationCollected} Donations`;
+    console.log(organization.organizationID); 
+    fetch(`http://localhost:3000/api/get/donatorcount/${organization.organizationID}`)
+    .then(response => response.json())
+    .then(data => {
+        charityDonations.textContent = data[0].DonatorCount + " Donations"; // Use the actual count field from the response
+    })
+    .catch(error => {
+        console.error('Error fetching donator count:', error);
+    });
+
     nameDonations.appendChild(charityName);
     nameDonations.appendChild(charityDonations);
     header.appendChild(nameDonations);
@@ -123,6 +132,9 @@ fetch('http://localhost:3000/api/getorganizations', {
 })
 .then(response => response.json())  // Parse the response as JSON
 .then(organizations => {
+
+    organizations.sort((a, b) => new Date(b.organizationRegisterDate) - new Date(a.organizationRegisterDate));
+
     organizations.forEach((org) => {
         // Append each created card to the panel container
         charityContainer.appendChild(createCard(org));

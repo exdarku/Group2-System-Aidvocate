@@ -175,6 +175,7 @@ body, html{
     border-bottom: solid #FCD384 15px;
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
     color: white;
+    cursor: pointer;
 }
 
 .thirdContent .card:hover {
@@ -294,13 +295,18 @@ body, html{
 .fourthContent .card .details {
     width: 40%;
     padding: 30px;
+    position: relative;
 }
 
 .fourthContent .card .details .header {
     width: 100%;
-    height: 20%;
+    height: auto;
     display: flex;
     justify-content: space-between;
+}
+
+.fourthContent .card .details .header .title {
+    margin-bottom: auto;
 }
 
 .fourthContent .card .details .header .title .status {
@@ -314,7 +320,7 @@ body, html{
 
 .fourthContent .details .infos {
     display: flex;
-    text-align: center;
+    text-align: left;
     align-items: center;
     font-size: small;
     margin-top: 10px;
@@ -327,6 +333,7 @@ body, html{
 
 .fourthContent .details .infos-place img {
     width: 25px;
+    height: 35px;
     margin-right: 22px;
     margin-left: 3px;
 }
@@ -339,6 +346,9 @@ body, html{
     border: none;
     border-radius: 20px;
     font-weight: 700;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 20px;
 }
 
 .fourthContent .view-event-more {
@@ -347,7 +357,7 @@ body, html{
 }
 
 .fourthContent img {
-    width: 70%;
+    width: 60%;
     height: 100%;
     max-width: 100%;
     object-fit: cover;

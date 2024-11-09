@@ -22,26 +22,27 @@ connection.connect((err) => {
     console.log("[CONNECTION]: API connected to MySQL database");
 });
 
-router.post('/donate', (req, res) =>{
-    const {
-        OrganizationID,
-        DonatorName,
-        DonationAmount,
-        Verified,
-        DonationProof
-    } = req.body;
+router.post('/donate', upload.single('DonationProof'), (req, res) => {
+  const { OrganizationID, DonatorName, DonationAmount, Verified } = req.body;
 
-    connection.query('INSERT INTO donationTable (OrganizationID, DonatorName, DonationAmount, Verified, DonationProof) VALUES (?, ?, ?, ?, ?)', [OrganizationID, DonatorName == "" ? "Anonymous" : DonatorName, DonationAmount, false, DonationProof], (err, result) => {
-        if (err) {
-            console.error('Error inserting donation:', err);
-            return res.status(500).json({ message: 'Error adding donation' });
-        }
+  
+  const DonationProof = req.file ? req.file.buffer : null;
 
-        res.status(200).json({
-            message: 'Donation added successfully',
-            donationID: result.insertId
-        });
-    });
+  connection.query(
+      'INSERT INTO donationTable (OrganizationID, DonatorName, DonationAmount, Verified, DonationProof) VALUES (?, ?, ?, ?, ?)', 
+      [OrganizationID, DonatorName === "" ? "Anonymous" : DonatorName, DonationAmount, false, DonationProof],
+      (err, result) => {
+          if (err) {
+              console.error('Error inserting donation:', err);
+              return res.status(500).json({ message: 'Error adding donation' });
+          }
+
+          res.status(200).json({
+              message: 'Donation added successfully',
+              donationID: result.insertId
+          });
+      }
+  );
 });
 
 router.post('/verifydonation', ensureAuthenticated, (req, res) => {
@@ -101,7 +102,7 @@ router.get('/get/donatorcount/:organizationID', ensureAuthenticated, (req, res) 
         if (err) throw err;
         res.status(200).json(results);
     });
-});
+}); 
 
 
 
@@ -281,6 +282,7 @@ router.post('/addorganization', ensureAuthenticated, upload.fields([
         organizationName,
         organizationDescription,
         organizationPhoneNumber,
+        organizationEmail,
         organizationAddress,
         organizationAbbreviation,
         representativeName,
@@ -296,13 +298,14 @@ router.post('/addorganization', ensureAuthenticated, upload.fields([
             organizationName, 
             organizationDescription, 
             organizationPhoneNumber, 
+            organizationEmail,
             organizationAddress, 
             organizationAbbreviation, 
-            representativeName, 
+            representativeName,
             representativeContactNumber,
             organizationProfilePicture,
             organizationFeaturePicture
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
     `;
 
     // Values for the query (including BLOBs for the images)
@@ -310,6 +313,7 @@ router.post('/addorganization', ensureAuthenticated, upload.fields([
         organizationName,
         organizationDescription,
         organizationPhoneNumber,
+        organizationEmail,
         organizationAddress,
         organizationAbbreviation,
         representativeName,
@@ -339,7 +343,8 @@ router.post('/addevent', ensureAuthenticated, upload.single('imageOfEvent_poster
         descriptionOfEvent,
         location,
         date,
-        time
+        time,
+        status
     } = req.body;
 
     // Get the uploaded image (if present)
@@ -354,8 +359,9 @@ router.post('/addevent', ensureAuthenticated, upload.single('imageOfEvent_poster
             imageOfEvent_posters,
             location,
             date,
-            time
-        ) VALUES (?, ?, ?, ?, ?, ?, ?)
+            time,
+            status
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
     // Values for the SQL query
@@ -366,7 +372,8 @@ router.post('/addevent', ensureAuthenticated, upload.single('imageOfEvent_poster
         eventImage,       // Store the uploaded image as a BLOB
         location,
         date,
-        time
+        time,
+        status
     ];
 
     // Execute the SQL query
@@ -451,7 +458,39 @@ router.get('/getdonationdescription/:organizationID', (req, res) => {
     });
 });
 
+router.get('/get/donationproof/:donationID', ensureAuthenticated, (req, res) => {
+  const donationID = req.params.donationID;
 
+  connection.query('SELECT DonationProof FROM donationTable WHERE DonationID = ?', [donationID], (err, results) => {
+      if (err) {
+          console.error('Error retrieving donation proof:', err);
+          return res.status(500).json({ message: 'Error retrieving donation proof' });
+      }
+
+      if (results.length > 0) {
+          const donationProof = results[0].DonationProof;
+
+          // Check if the donation proof exists
+          if (!donationProof) {
+              return res.status(404).send('Donation proof not found');
+          }
+
+          // Determine MIME type based on file (if required)
+          const mimeType = getImageMimeType(donationProof);  // You can adapt this function to detect file types
+
+          // If MIME type is null, respond with an error
+          if (!mimeType) {
+              return res.status(500).send('Error: Invalid donation proof file');
+          }
+
+          // Set the correct content type header based on file format
+          res.contentType(mimeType);
+          res.send(donationProof);  // Send the proof file data as the response
+      } else {
+          res.status(404).send('Donation proof not found');
+      }
+  });
+});
 
 
 module.exports = router;

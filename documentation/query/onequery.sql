@@ -1,5 +1,5 @@
 -- One Query SQL
--- Updated Nov 7, 2024 | 4:47AM
+-- Updated Nov 8, 2024 | 4:47PM
 
 -- Drop tables manually (adjust based on your needs)
 DROP TABLE IF EXISTS organizationEvents, organizationDonationDescription, donationTable, organizationData;
@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS organizationData (
     organizationName VARCHAR(255) NOT NULL,
     organizationDescription TEXT,
     organizationPhoneNumber VARCHAR(20),
+    organizationEmail VARCHAR(255),
     organizationAddress VARCHAR(255),
     organizationAbbreviation VARCHAR(50),
     representativeName VARCHAR(255),
@@ -40,7 +41,7 @@ CREATE TABLE IF NOT EXISTS donationTable (
     DonatorName VARCHAR(255),
     DonationAmount DECIMAL(10, 2) NOT NULL,
     Verified BOOLEAN DEFAULT FALSE,
-    DonationProof BLOB,
+    DonationProof LONGBLOB,
     FOREIGN KEY (OrganizationID) REFERENCES organizationData(organizationID)
 );
 
@@ -54,6 +55,7 @@ CREATE TABLE IF NOT EXISTS organizationEvents (
     location VARCHAR(255),
     date DATE,
     time TIME,
+    status INT,
     FOREIGN KEY (organizationID) REFERENCES organizationData(organizationID) ON DELETE CASCADE
 );
 

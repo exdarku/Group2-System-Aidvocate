@@ -18,6 +18,8 @@
    - [Get all events](#13-get-all-events)
    - [Get a specific event](#14-get-an-event-data)
    - [Get verified donator count](#15-get-verified-donator-count)
+   - [Get Feature Image of the Organization](#16-get-organization-featured-image)
+   - [Get Logo Image of the Organization](#17-get-organization-logo-image)
 3. [Authentication Endpoints](#authentication-endpoints)
    - [User Authentication](#1-user-authentication)
    - [User Login](#2-user-login)
@@ -99,7 +101,7 @@
 
 ### 5. **Get a Single Organization**
 - **Endpoint**: `/api/get/organization`
-- **Method**: `GET`
+- **Method**: `POST`
 - **Description**: Retrieves details of a single organization.
 
   **Request Body**:
@@ -125,7 +127,8 @@
       "descriptionOfEvent": "A night of fundraising for local children’s education programs.",
       "location": "Downtown Convention Center, Main Hall",
       "date": "2024-12-15",
-      "time": "19:00:00"
+      "time": "19:00:00",
+      "status": 0
   }
   ```
 
@@ -185,7 +188,7 @@
 - **Description**: Retrieves all organization events in the database.
 
 ### 14. **Get an event data**
-- **Endpoint**: `/api/get/donation/:eventID`
+- **Endpoint**: `/api/get/event/:eventID`
 - **Method**: `GET`
 - **Description**: Retrieves a specific organization event in the database.
 
@@ -194,6 +197,18 @@
 - **Endpoint**: `/api/get/donatorcount/:organizationID`
 - **Method**: `GET`
 - **Description**: Retrieves all donator count that has been verified.
+
+
+### 16. **Get Organization Featured Image**
+- **Endpoint**: `/api/image/:organizationId`
+- **Method**: `GET`
+- **Description**: Retrieves the featured image of an organization.
+
+
+### 17. **Get Organization Logo Image**
+- **Endpoint**: `/api/logo/:organizationId`
+- **Method**: `GET`
+- **Description**: Retrieves the logo of an organization.
 
 
 ---

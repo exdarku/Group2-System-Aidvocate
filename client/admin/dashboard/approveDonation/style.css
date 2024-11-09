@@ -734,3 +734,7 @@ button:hover {
 .dataFields {
     display: none;
 }
+
+#proofOfPayment {
+    width: 200px;
+}

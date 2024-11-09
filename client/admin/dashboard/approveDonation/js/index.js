@@ -203,17 +203,19 @@ selectElement.addEventListener('change', () => {
     // Get the data stored in the selected option
     const donatorName = selectedOption.getAttribute('data-donatorName');
     const donationAmount = selectedOption.getAttribute('data-donationAmount');
+    const donationID = selectedOption.getAttribute('data-donationId');
     
     // Call the function to update the text boxes with the selected data
-    changeTextBoxValues(donatorName, donationAmount);
+    changeTextBoxValues(donatorName, donationAmount, donationID);
     
     // Show the data fields
     document.querySelector('.dataFields').style.display = "block";
 });
 
-function changeTextBoxValues(donatorName, amount) {
+function changeTextBoxValues(donatorName, amount, donationID) {
     document.getElementById('donatorNameTextBox').value = donatorName;
     document.getElementById('donationAmountTextBox').value = amount;
+    document.getElementById('proofOfPayment').src = `/api/get/donationproof/${donationID}`;
 }
 
 // Fetch donations and populate the select dropdown
@@ -273,6 +275,7 @@ document.getElementById('approveButton').addEventListener('click', () => {
         .then(data => {
             console.log(data);
             alert("Donation has been verified!");
+            window.location.reload();
         })
         .catch(error => {
             console.error('Error verifying donation:', error);

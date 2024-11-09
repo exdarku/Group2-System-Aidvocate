@@ -12,43 +12,82 @@ charityForm.addEventListener('submit', function(event) {
     const organizationAddress = document.getElementById('organizationAddress').value;
     const organizationAbbreviation = document.getElementById('organizationAbbreviation').value;
     const representativeName = document.getElementById('representativeName').value;
+    const organizationEmail = document.getElementById('organizationEmail').value;
     const representativeContactNumber = document.getElementById('representativeContactNumber').value;
-    const totalDonationCollected = document.getElementById('totalDonationCollected').value;
+    // const totalDonationCollected = document.getElementById('totalDonationCollected').value;
     const organizationProfilePicture = document.getElementById('organizationProfilePicture').files[0]; // Get the file
     const organizationFeaturedPicture = document.getElementById('organizationFeaturedPicture').files[0]; // Get the featured image file
-
+    
     // Prepare the FormData object to send as multipart form data
-    const formData = new FormData();
-
-    formData.append('organizationName', organizationName);
-    formData.append('organizationDescription', organizationDescription);
-    formData.append('organizationPhoneNumber', organizationPhoneNumber);
-    formData.append('organizationAddress', organizationAddress);
-    formData.append('organizationAbbreviation', organizationAbbreviation);
-    formData.append('representativeName', representativeName);
-    formData.append('representativeContactNumber', representativeContactNumber);
-    formData.append('totalDonationCollected', totalDonationCollected);
+    const charityData = new FormData();
+    charityData.append('organizationName', organizationName);
+    charityData.append('organizationDescription', organizationDescription);
+    charityData.append('organizationPhoneNumber', organizationPhoneNumber);
+    charityData.append('organizationEmail', organizationEmail);
+    charityData.append('organizationAddress', organizationAddress);
+    charityData.append('organizationAbbreviation', organizationAbbreviation);
+    charityData.append('representativeName', representativeName);
+    charityData.append('representativeContactNumber', representativeContactNumber);
+    // charityData.append('totalDonationCollected', totalDonationCollected);
 
     // Append files if they exist
-    if (organizationProfilePicture) {
-        formData.append('organizationProfilePicture', organizationProfilePicture);
-    }
-    if (organizationFeaturedPicture) {
-        formData.append('organizationFeaturedPicture', organizationFeaturedPicture);
-    }
+    charityData.append('organizationProfilePicture', organizationProfilePicture);
+    
+    charityData.append('organizationFeaturedPicture', organizationFeaturedPicture);
+    
 
     // Use fetch to send data to the server
     fetch('/api/addorganization', {
         method: 'POST',
-        body: formData, // Send form data (includes files)
+        body: charityData, // Send form data (includes files)
     })
     .then(response => response.json())
     .then(data => {
         // Handle the response from the server
         if (data.message === 'Organization added successfully') {
+            console.log("GOOD ADD ORG")
+            
+            
+            const charityDonationData = new FormData();
+            const nameOfAccountHolder = document.getElementById('organizationBankAccountHolder').value;
+            const gcashQr = document.getElementById('organizationGcashQR').files[0];
+            const bankAccountName = document.getElementById('organizationBankAccountName').value;
+            const bankAccountBank = document.getElementById('organizationBankAccountBank').value;
+            const bankAccountNumber = document.getElementById('organizationBankAccountNumber').value;
+            
+            
+            charityDonationData.append('organizationID', data.organizationID);
+            charityDonationData.append('nameOfAccountHolder', nameOfAccountHolder);
+            charityDonationData.append('gcashQr', gcashQr);
+            if(bankAccountName) {
+                charityDonationData.append('bankAccountName', bankAccountName)
+            }
+            if(bankAccountBank) {
+                charityDonationData.append('bankAccountBank', bankAccountBank)
+            }
+            if(bankAccountNumber) {
+                charityDonationData.append('bankAccountNumber', bankAccountNumber)
+            }
+            
+            fetch('/api/adddonationdescription', {
+                method: 'POST',
+                body: charityDonationData, // Send form data (includes files)
+            })
+            .then(response => response.json())
+            .then(res => { 
+                if(res.message == 'Donation description added successfully') {
+                    alert('Donation description added successfully!');
+                    charityForm.reset();
+                    window.location.reload();
+                } else {
+                    alert('Error: ' + res.message);
+                }
+            })
+            .catch(error => {
+                alert('Error during submission:', error);
+            });
+
             alert('Organization registered successfully!');
-            form.reset();  // Reset the form after successful submission
-            window.location.reload();
         } else {
             alert('Error: ' + data.message);
         }
