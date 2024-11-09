@@ -114,6 +114,7 @@ donationForm.addEventListener('submit', function(event) {
     donationData.append('DonationAmount', amountValue);
     donationData.append('DonationProof', document.getElementById('proofOfPayment').files[0]);
 
+
     fetch('/api/donate', {
         method: 'POST',
         body: donationData
@@ -122,6 +123,7 @@ donationForm.addEventListener('submit', function(event) {
     .then(data => {
         if (data.message === 'Donation added successfully') {
             showThankYouGreet();
+            donationForm.reset();
             closeDonationForm();
         } else {
             alert('Error: ' + data.message);

@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS organizationData (
     totalDonationCollected DECIMAL(15, 2) DEFAULT 0.00
 );
 
+
 -- Create `donationTable` table
 CREATE TABLE IF NOT EXISTS donationTable (
     DonationID INT AUTO_INCREMENT PRIMARY KEY,
@@ -58,6 +59,8 @@ CREATE TABLE IF NOT EXISTS organizationEvents (
     status INT,
     FOREIGN KEY (organizationID) REFERENCES organizationData(organizationID) ON DELETE CASCADE
 );
+
+
 
 -- Create `organizationDonationDescription` table
 CREATE TABLE IF NOT EXISTS organizationDonationDescription (
